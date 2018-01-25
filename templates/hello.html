@@ -18,30 +18,7 @@
       <input type="submit" value="検索">
     </form>
     <h2>社員一覧</h2>
-    <table>
-      <tr>
-        <th>ユーザID</th>
-        <th>名字</th>
-        <th>名前</th>
-        <th>読み仮名(名字)</th>
-        <th>読み仮名(名前)</th>
-        <th>入社日</th>
-        <th>誕生日</th>
-        <th>年齢</th>
-      </tr>
-      {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in members %}
-      <tr>
-        <td>{{ id }}</td>
-        <td>{{ lastname }}</td>
-        <td>{{ firstname }}</td>
-        <td>{{ lstyomi }}</td>
-        <td>{{ fstyomi }}</td>
-        <td>{{ start }}</td>
-        <td>{{ birth }}</td>
-        <td>{{ age }}</td>
-      </tr>
-      {% endfor %}
-    </table>
+
     {% if value_search %}
     <h2>{{ value_search }}</h2>
     <table>
