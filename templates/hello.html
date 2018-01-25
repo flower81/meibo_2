@@ -2,44 +2,127 @@
 <html lang="ja">
   <head>
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='index.css')}}">
+    <!-- <link type="text/javascript" href="{{url_for('js',filename='sidebar.js')}}"> -->
+    <link rel="stylesheet" type="text/css" href="../static/index.css">
     <meta charset="utf-8">
+    <title>meibo test</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/sidebar.js"></script>
+
     <title>{{ title }}</title>
   </head>
   <body>
-    <h1>meibo Prototype</h1>
-    <form action="/" method="post">
-      ユーザID<input type="text" name="search" placeholder="検索するキーワードを入力してください">
-      <input type="submit" value="検索">
-    </form>
-    <h2>社員一覧</h2>
-    <table>
-      <tr>
-        <th>ユーザID</th>
-        <th>名字</th>
-        <th>名前</th>
-        <th>読み仮名(名字)</th>
-        <th>読み仮名(名前)</th>
-        <th>入社日</th>
-        <th>誕生日</th>
-        <th>年齢</th>
-      </tr>
-      {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in members %}
-      <tr>
-        <td>{{ id }}</td>
-        <td>{{ lastname }}</td>
-        <td>{{ firstname }}</td>
-        <td>{{ lstyomi }}</td>
-        <td>{{ fstyomi }}</td>
-        <td>{{ start }}</td>
-        <td>{{ birth }}</td>
-        <td>{{ age }}</td>
-      </tr>
-      {% endfor %}
-    </table>
-    {% if value_search %}
-    <h2>{{ value_search }}</h2>
-    {% endif %}
-    <h1>!!試験運用中!!</h1>
-    <img src="{{url_for('static', filename='snake.png')}}" alt="snake">
+    <!-- ヘッダー -->
+    <header>
+      <div class="header-wrapper">
+        <div class="header-left">
+          <h1>Meibo demonstration</h1>
+        </div>
+        <div class="header-right">
+          <p>ボタンとか</p>
+        </div>
+      </div>
+    </header>
+    <!-- メイン -->
+    <div class= "main">
+      <!-- ここからサイドバー -->
+      <!-- <div class="sidebar-wrapper">
+        <div class="btn">
+          <span class="fa fa-angle-left"></span>
+          <span class="fa fa-angle-right"></span>
+        </div>
+        <div class= "sidebar"></div>
+      </div> -->
+      <div class="contents">
+        <!-- 検索フォーム -->
+        <form>
+          <div class="search">
+            <div class="container">
+              <div class="search-form">
+                <h1>Prototype</h1>
+                ユーザID<input type="text" name="search" placeholder="検索するキーワードを入力してください">
+                <input type="submit" value="検索">
+                <div class="search-content">
+                  <span class="search-title">ID</span>
+                  <input class="search-type1" id="id-form" type="text">
+                </div>
+                <div class="search-content">
+                  <span class="search-title">NAME</span>
+                  <input class="search-type1" id="NAME-form" type="text">
+                </div>
+                <div class="search-content">
+                  <span class="search-title">name</span>
+                  <input class="search-type1" id="name-form" type="text">
+                </div>
+                <div class="search-content">
+                  <span class="search-title">Birth</span>
+                  <input class="search-type2" id="birth-from" type="date" max="9999-12-31">
+                  <span>〜</span>
+                  <input class="search-type2" id="birth-to" type="date" max="9999-12-31">
+                </div>
+                <div class="search-content">
+                  <span class="search-title">Joined</span>
+                  <input class="search-type2" id="joined-from" type="date" max="9999-12-31">
+                  <spam>〜</span>
+                  <input class="search-type2" id="joined-to" type="date" max="9999-12-31">
+                </div>
+                <div class="search-content">
+                  <span class="search-title">age</span>
+                  <input class="search-type2" id="age-from" type="number" min="0">
+                  <spam>〜</span>
+                  <input class="search-type2" id="age-to" type="number" min="0">
+                </div>
+              </div>
+              <div class="btn-form">
+                <button class="btn-2 search-button" type="submit">検索</button>
+                <button class="btn-2 reset-button" type="submit">リセット</button>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class= "clear">
+          <div class= "border"></div>
+        </div>
+        <!-- 検索結果 -->
+        <div class="result">
+          <div class= "container2">
+
+            <h2>検索結果</h2>
+            <table class="table-container">
+              <tr class="result-table">
+                <th>ID</th>
+                <th>LASTNAME</th>
+                <th>FIRSTNAME</th>
+                <th>lastname</th>
+                <th>firstname</th>
+                <th>joined</th>
+                <th>Birthday</th>
+                <th>age</th>
+              </tr>
+              {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in members %}
+              <tr class="result-table">
+                <td>{{ id }}</td>
+                <td>{{ lastname }}</td>
+                <td>{{ firstname }}</td>
+                <td>{{ lstyomi }}</td>
+                <td>{{ fstyomi }}</td>
+                <td>{{ start }}</td>
+                <td>{{ birth }}</td>
+                <td>{{ age }}</td>
+              </tr>
+              {% endfor %}
+            </table>
+            {% if value_search %}
+            <h2>{{ value_search }}</h2>
+            {% endif %}
+            <h1>!!試験運用中!!</h1>
+            <img src="{{url_for('static', filename='snake.png')}}" alt="snake">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- フッター -->
+    <footer></footer>
   </body>
 </html>
