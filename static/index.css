@@ -1,5 +1,6 @@
-h1 {
-  color: blue;
+.contents h1, .contents h2 {
+  color: #017666;
+  margin: 0px;
 }
 
 body {
@@ -99,7 +100,7 @@ header {
 }
 
 .search-form{
-  height: 330px;
+  height: 400px;
   width: 500px;
   padding: 30px 30px 0px 30px;
   margin: 0px auto;
@@ -139,7 +140,6 @@ header {
 .border {
   height: 30px;
   width: 1300px;
-  background-image: url(../image/border.png);
   background-size: contain;
   background-color: rgba(0, 0, 0, 0.5);
 }
@@ -157,11 +157,15 @@ header {
   text-align: center;
   margin: 0px auto;
   background-color: rgba(255, 255, 255, 0.8);
+  padding: 30px 0px 20px 0px;
+}
+
+.contents h2 {
+  padding-bottom: 20px;
 }
 
 .btn-form{
   width: 500px;
-  height: 150px;
   margin: 0px auto;
 }
 
@@ -171,7 +175,7 @@ header {
   box-shadow: 0px 0px 7px rgba( 0, 50, 100, 0.5);
   background-color: rgb( 255, 255, 255);
   border: 1px solid rgba(0, 50, 100, 0.5);
-  font-size: 13px
+  font-size: 13px;
 }
 
 .search-button {
@@ -184,9 +188,28 @@ header {
   width: 1300px;
 }
 
+.table-container {
+  margin: 0px auto;
+}
+
+.table-container {
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: white;
+}
+
+tr th, tr td {
+  border: 1px solid black;
+  height: 35px;
+  width: 120px;
+  box-shadow: 0px 0px 3px rgba( 0, 50, 100, 0.5) inset;
+  background-color: rgb( 255, 255, 255);
+  border: 1px solid rgba(0, 50, 100, 0.5);
+}
+
 footer {
   position: absolute;
-  top: 1125px;
+  top: 1105px;
   width: 1300px;
   height: 250px;
   background-color: rgba(0, 0, 0, 0.5);
