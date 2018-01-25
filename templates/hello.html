@@ -38,6 +38,20 @@
     </table>
     {% if value_search %}
     <h2>{{ value_search }}</h2>
+    <table>
+      <tr>
+        {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result %}
+        <td>{{ id }}</td>
+        <td>{{ lastname }}</td>
+        <td>{{ firstname }}</td>
+        <td>{{ lstyomi }}</td>
+        <td>{{ fstyomi }}</td>
+        <td>{{ start }}</td>
+        <td>{{ birth }}</td>
+        <td>{{ age }}</td>
+        {% endfor %}
+      </tr>
+    </table>
     {% endif %}
     <h1>!!試験運用中!!</h1>
     <img src="{{url_for('static', filename='snake.png')}}" alt="snake">

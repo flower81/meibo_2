@@ -25,6 +25,10 @@ def hello():
 
     try:
         value_search = request.form['search']
+
+        prType = type(value_search)
+        print(prType)
+
     except:
         value_search = None
 
