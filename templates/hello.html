@@ -39,6 +39,9 @@
           <div class="search">
             <div class="container">
               <div class="search-form">
+                <h1>Prototype</h1>
+                ユーザID<input type="text" name="search" placeholder="検索するキーワードを入力してください">
+                <input type="submit" value="検索">
                 <div class="search-content">
                   <span class="search-title">ID</span>
                   <input class="search-type1" id="id-form" type="text">
@@ -83,25 +86,21 @@
         <!-- 検索結果 -->
         <div class="result">
           <div class= "container2">
-            <h1>meibo Prototype</h1>
-            <form action="/" method="post">
-              ユーザID<input type="text" name="search" placeholder="検索するキーワードを入力してください">
-              <input type="submit" value="検索">
-            </form>
-            <h2>社員一覧</h2>
-            <table>
-              <tr>
-                <th>ユーザID</th>
-                <th>名字</th>
-                <th>名前</th>
-                <th>読み仮名(名字)</th>
-                <th>読み仮名(名前)</th>
-                <th>入社日</th>
-                <th>誕生日</th>
-                <th>年齢</th>
+
+            <h2>検索結果</h2>
+            <table class="table-container">
+              <tr class="result-table">
+                <th>ID</th>
+                <th>LASTNAME</th>
+                <th>FIRSTNAME</th>
+                <th>lastname</th>
+                <th>firstname</th>
+                <th>joined</th>
+                <th>Birthday</th>
+                <th>age</th>
               </tr>
               {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in members %}
-              <tr>
+              <tr class="result-table">
                 <td>{{ id }}</td>
                 <td>{{ lastname }}</td>
                 <td>{{ firstname }}</td>
