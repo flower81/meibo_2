@@ -3,9 +3,8 @@ import MySQLdb #追加
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET','POST'])
+@app.route('/', methods=['POST','GET'])
 def hello():
-
     #db setting
     conn = MySQLdb.connect(
             host='localhost',
@@ -16,28 +15,38 @@ def hello():
         )
 
     curs = conn.cursor()
-    sql = "select * from meibotest"
-    curs.execute(sql)
-    members = curs.fetchall()
+    kekka = ''
+    point = "'"
 
-    curs.close()
-    conn.close()
+#    sql = "select * from meibotest"
+#    curs.execute(sql)
+#    members = curs.fetchall()
 
-    try:
-        value_search = request.form['search']
+    #curs.close()
+    #conn.close()
 
-        prType = type(value_search)
-        print(prType)
+    if request.method == 'POST':
+        value_search = request.form['sagasu']
+        print('１段階')
+        if value_search != "":
+            check = 1
+            print('２段階')
+            if check == 1:
+                sql = ("SELECT * FROM meibotest WHERE lastname = " + point + value_search + point)
+            curs.execute(sql)
+            kekka = curs.fetchall()
 
-    except:
+            for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in kekka:
+                print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
+
+    else:
         value_search = None
-
 
     #return name
     return render_template('hello.html',
                             title='flask test',
-                            members=members,
-                            value_search=value_search) #変更
+                            kekka=kekka
+                            ) #変更
 
 ## おまじない
 if __name__ == "__main__":

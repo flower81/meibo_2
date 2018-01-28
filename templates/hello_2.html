@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='index.css')}}">
+    <meta charset="utf-8">
+    <title>{{ title }}</title>
+  </head>
+  <body>
+    <h1 style="color:white;">meibo Prototype</h1>
+
+    <form action="/" method="post">
+      ユーザID<input type="text" name="sagasu" placeholder="検索するキーワードを入力してください">
+      <input type="submit" value="検索">
+    </form>
+
+    <h2 style="color:white;">社員一覧</h2>
+
+    <table>
+      <tr>
+        <th>ユーザID</th>
+        <th>名字</th>
+        <th>名前</th>
+        <th>読み仮名(名字)</th>
+        <th>読み仮名(名前)</th>
+        <th>入社日</th>
+        <th>誕生日</th>
+        <th>年齢</th>
+      </tr>
+      {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in members %}
+      <tr>
+        <td>{{ id }}</td>
+        <td>{{ lastname }}</td>
+        <td>{{ firstname }}</td>
+        <td>{{ lstyomi }}</td>
+        <td>{{ fstyomi }}</td>
+        <td>{{ start }}</td>
+        <td>{{ birth }}</td>
+        <td>{{ age }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    {% if value_search %}
+    <h2 style="color:white;">{{ value_search }}</h2>
+    {% endif %}
+    <table>
+    {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in kekka %}
+    <tr>
+    <td>{{ id }}</td>
+    <td>{{ lastname }}</td>
+    <td>{{ firstname }}</td>
+    <td>{{ lstyomi }}</td>
+    <td>{{ fstyomi }}</td>
+    <td>{{ start }}</td>
+    <td>{{ birth }}</td>
+    <td>{{ age }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
+    {% if result %}
+    <h2 style="color:yellow;">{{ result }}</h2>
+    {% endif %}
+
+    <h1 style="color:white;">!!試験運用中!!</h1>
+    <img src="{{url_for('static', filename='snake.png')}}" alt="snake">
+  </body>
+</html>

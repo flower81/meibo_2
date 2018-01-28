@@ -7,38 +7,8 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="{{url_for('static',filename='sidebar.js')}}"></script>
-
-    <title>{{ title }}</title>
   </head>
   <body>
-<<<<<<< HEAD
-    <h1>meibo Prototype</h1>
-    <form action="/" method="post">
-      ユーザID<input type="text" name="search" placeholder="検索するキーワードを入力してください">
-      <input type="submit" value="検索">
-    </form>
-    <h2>社員一覧</h2>
-
-    {% if value_search %}
-    <h2>{{ value_search }}</h2>
-    <table>
-      <tr>
-        {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result %}
-        <td>{{ id }}</td>
-        <td>{{ lastname }}</td>
-        <td>{{ firstname }}</td>
-        <td>{{ lstyomi }}</td>
-        <td>{{ fstyomi }}</td>
-        <td>{{ start }}</td>
-        <td>{{ birth }}</td>
-        <td>{{ age }}</td>
-        {% endfor %}
-      </tr>
-    </table>
-    {% endif %}
-    <h1>!!試験運用中!!</h1>
-    <img src="{{url_for('static', filename='snake.png')}}" alt="snake">
-=======
     <!-- ヘッダー -->
     <header>
       <div class="header-wrapper">
@@ -62,20 +32,17 @@
       </div> -->
       <div class="contents">
         <!-- 検索フォーム -->
-        <form>
+        <form action="/" method="post">
           <div class="search">
             <div class="container">
               <div class="search-form">
-                <h1>Prototype</h1>
-                ユーザID<input type="text" name="search" placeholder="検索するキーワードを入力してください">
-                <input type="submit" value="検索">
                 <div class="search-content">
                   <span class="search-title">ID</span>
                   <input class="search-type1" id="id-form" type="text">
                 </div>
                 <div class="search-content">
                   <span class="search-title">NAME</span>
-                  <input class="search-type1" id="NAME-form" type="text">
+                  <input class="search-type1" id="NAME-form" type="text" name="sagasu">
                 </div>
                 <div class="search-content">
                   <span class="search-title">name</span>
@@ -126,8 +93,8 @@
                 <th>Birthday</th>
                 <th>age</th>
               </tr>
-              {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in members %}
               <tr class="result-table">
+                {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in kekka %}
                 <td>{{ id }}</td>
                 <td>{{ lastname }}</td>
                 <td>{{ firstname }}</td>
@@ -139,9 +106,6 @@
               </tr>
               {% endfor %}
             </table>
-            {% if value_search %}
-            <h2>{{ value_search }}</h2>
-            {% endif %}
             <h1>!!試験運用中!!</h1>
             <img src="{{url_for('static', filename='snake.png')}}" alt="snake">
           </div>
@@ -150,6 +114,5 @@
     </div>
     <!-- フッター -->
     <footer></footer>
->>>>>>> 84f0508e3136ffc1ac18d55f6244e1561a5ac064
   </body>
 </html>
