@@ -46,27 +46,29 @@
                     <input class="search-type1" id="id-form" type="text">
                   </div>
                   <div class="search-content">
-                    <span class="search-title">NAME</span>
-                    <input class="search-type1" id="NAME-form" type="text" name="sagasu">
+                    <span class="search-title">姓名(漢字)</span>
+                    <input class="search-type3" id="FIRSTNAME-form" type="text" name="sagasu">
+                    <input class="search-type3" id="LASTNAME-form" type="text" >
                   </div>
                   <div class="search-content">
-                    <span class="search-title">name</span>
-                    <input class="search-type1" id="name-form" type="text">
+                    <span class="search-title">姓名(かな)</span>
+                    <input class="search-type3" id="firstname-form" type="text">
+                    <input class="search-type3" id="lastname-form" type="text">
                   </div>
                   <div class="search-content">
-                    <span class="search-title">Birth</span>
-                    <input class="search-type2" id="birth-from" type="date" max="9999-12-31">
-                    <span>〜</span>
-                    <input class="search-type2" id="birth-to" type="date" max="9999-12-31">
-                  </div>
-                  <div class="search-content">
-                    <span class="search-title">Joined</span>
+                    <span class="search-title">入社日</span>
                     <input class="search-type2" id="joined-from" type="date" max="9999-12-31">
-                    <spam>〜</span>
+                    <span>〜</span>
                     <input class="search-type2" id="joined-to" type="date" max="9999-12-31">
                   </div>
                   <div class="search-content">
-                    <span class="search-title">age</span>
+                    <span class="search-title">誕生日</span>
+                    <input class="search-type2" id="birth-from" type="date" max="9999-12-31">
+                    <spam>〜</span>
+                    <input class="search-type2" id="birth-to" type="date" max="9999-12-31">
+                  </div>
+                  <div class="search-content">
+                    <span class="search-title">年齢</span>
                     <input class="search-type2" id="age-from" type="number" min="0">
                     <spam>〜</span>
                     <input class="search-type2" id="age-to" type="number" min="0">
@@ -92,13 +94,13 @@
               <table class="table-container">
                 <tr class="result-table">
                   <th>ID</th>
-                  <th>LASTNAME</th>
-                  <th>FIRSTNAME</th>
-                  <th>lastname</th>
-                  <th>firstname</th>
-                  <th>joined</th>
-                  <th>Birthday</th>
-                  <th>age</th>
+                  <th>姓(漢字)</th>
+                  <th>名(漢字)</th>
+                  <th>姓(かな)</th>
+                  <th>名(かな)</th>
+                  <th>入社日</th>
+                  <th>誕生日</th>
+                  <th>年齢</th>
                 </tr>
                 <tr class="result-table">
                   {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in kekka %}
