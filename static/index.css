@@ -1,10 +1,10 @@
 .contents h1, .contents h2 {
-  color: #017666;
+  color: rgb(10, 90, 140);
   margin: 0px;
 }
 
 body {
-  font-family: 'Hiragino Maru Gothic Pro',sans-serif;
+  font-family: 'Meiryo',sans-serif;
   background-image: url(background1.png);
   background-size: 20% auto;
   margin: 0px;
@@ -116,19 +116,19 @@ header {
 }
 
 .search-form{
-  height: 270px;
-  width: 500px;
-  padding: 10px 30px 0px 30px;
+  height: 260px;
+  width: 560px;
+  padding: 20px 30px 0px 30px;
   margin: 0px auto;
 }
 
 .search-content {
-  margin: 15px 0px;
+  margin: 10px 0px;
 }
 
 .search-type1{
-  width: 346px;
-  height: 20px;
+  width: 348px;
+  height: 25px;
   box-shadow: 0px 0px 7px rgba( 0, 50, 100, 0.5) inset;
   background-color: rgb( 255, 255, 255);
   border: 1px solid rgba(0, 50, 100, 0.5);
@@ -137,7 +137,16 @@ header {
 
 .search-type2{
   width: 160px;
-  height: 20px;
+  height: 25px;
+  box-shadow: 0px 0px 7px rgba( 0, 50, 100, 0.5) inset;
+  background-color: rgb( 255, 255, 255);
+  border: 1px solid rgba(0, 50, 100, 0.5);
+  font-size: 13px;
+}
+
+.search-type3{
+  width: 169px;
+  height: 25px;
   box-shadow: 0px 0px 7px rgba( 0, 50, 100, 0.5) inset;
   background-color: rgb( 255, 255, 255);
   border: 1px solid rgba(0, 50, 100, 0.5);
@@ -145,8 +154,10 @@ header {
 }
 
 .search-title {
-  width: 60px;
+  width: 100px;
   float: left;
+  height: 25px;
+  border-bottom: 1px solid rgba(1, 1, 2, 0.3);
 }
 
 .clear{
@@ -195,11 +206,11 @@ header {
 }
 
 .search-button {
-  margin-left: 60px;
+  margin-left: 100px;
 }
 
 .random-button {
-  margin-left: 60px;
+  margin-left: 100px;
   margin-top: 15px;
 }
 
@@ -226,6 +237,11 @@ tr th, tr td {
   box-shadow: 0px 0px 3px rgba( 0, 50, 100, 0.5) inset;
   background-color: rgb( 255, 255, 255);
   border: 1px solid rgba(0, 50, 100, 0.5);
+  font-weight: normal;
+}
+
+tr th {
+  background-color: rgb(150, 195, 250);
 }
 
 footer {
