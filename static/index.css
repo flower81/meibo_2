@@ -9,6 +9,14 @@ body {
   background-size: 20% auto;
   margin: 0px;
   width: 1300px;
+  height: 1500px;
+}
+
+#hoge {
+  width: 1300px;
+  height: 1500px;
+  margin:0 auto;
+  background-color: rgba(255, 0, 0, 0);
 }
 
 header {
