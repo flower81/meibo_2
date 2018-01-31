@@ -3,7 +3,7 @@
   <head>
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='index.css')}}">
     <!-- この直下のCSSリンクは宮沢のローカル確認用 -->
-    <!-- <link rel="stylesheet" type="text/css" href="../static/index.css"> -->
+    <link rel="stylesheet" type="text/css" href="../static/index.css">
     <meta charset="utf-8">
     <title>meibo test</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
@@ -11,7 +11,7 @@
     <script type="text/javascript" src="{{url_for('static',filename='sidebar.js')}}"></script>
   </head>
   <body>
-    <div id="hoge">
+    <!-- <div id="hoge"> -->
       <!-- ヘッダー -->
       <header>
         <div class="header-wrapper">
@@ -25,6 +25,8 @@
       </header>
       <!-- メイン -->
       <div class= "main">
+        <div id="hoge">
+        </div>
         <!-- ここからサイドバー -->
         <!-- <div class="sidebar-wrapper">
           <div class="btn">
@@ -74,6 +76,9 @@
                   <button class="btn-2 search-button" type="submit">検索</button>
                   <button class="btn-2 reset-button" type="submit">リセット</button>
                 </div>
+                <div class="btn-form">
+                  <button class="btn-2 random-button" type="submit">ランダム</button>
+                </div>
               </div>
             </div>
           </form>
@@ -118,8 +123,8 @@
       <footer></footer>
     </div>
     <!-- この直下のjs2つは宮沢のローカル確認用 -->
-    <!-- <script type="text/javascript" src="../static/particles.js"></script>
-    <script type="text/javascript" src="../static/setting.js"></script> -->
+    <script type="text/javascript" src="../static/particles.js"></script>
+    <script type="text/javascript" src="../static/setting.js"></script>
     <script type="text/javascript" src="{{url_for('static',filename='particles.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static',filename='setting.js')}}"></script>
   </body>
