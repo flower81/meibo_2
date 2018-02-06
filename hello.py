@@ -14,30 +14,48 @@ def hello():
             charset='utf8',
         )
 
-    curs = conn.cursor()
-    kekka = ''
-    point = "'"
+    curs = conn.cursor()    #   mysqlと接続する時に使う
+    kekka = ''      #   検索結果を格納する変数
+    p = "'"     #   「'」を格納する変数
+    jokenlst = ['id','lastname','firstname','lstyomi','fstyomi','start','birth','age']
+    #   検索条件をリスト化
+    glNgs = 0   #   GETした検索語句リスト(getlst)の長さ(要素数)を格納する変数
+    dic = {}    #   検索語句と検索条件を結び辞書型にし、格納する変数
+    bns = ''    #   文章(sql文の後半)を格納する変数
+    wrdA = ' AND '  #   見た通り
 
-#    sql = "select * from meibotest"
-#    curs.execute(sql)
-#    members = curs.fetchall()
-
-    #curs.close()
-    #conn.close()
-
+    
     if request.method == 'POST':
-        value_search = request.form['sagasu']
-        print('１段階')
-        if value_search != "":
-            check = 1
-            print('２段階')
-            if check == 1:
-                sql = ("SELECT * FROM meibotest WHERE lastname = " + point + value_search + point)
-            curs.execute(sql)
-            kekka = curs.fetchall()
+        getlst = request.form.getlist('sagasu')
+        print(getlst)
+        glNgs = len(getlst)
+        for i in range(glNgs):
+            w = getlst[i]
+            nn = jokenlst[i]
+            dic[w] = nn
+        print(dic)
+        list02 = [i for i, i in enumerate(getlst) if i != '']
+        lst2ngs = len(list02)
 
-            for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in kekka:
-                print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
+        if lst2ngs > 1:
+            for j in list02:
+                bns += str(dic[j]) + ' = ' + p + j + p + wrdA
+            bns = bns.rstrip(' AND ')
+            sql = "SELECT * FROM meibotest WHERE " + bns
+
+        elif lst2ngs == 1:
+            for j in list02:
+                bns += str(dic[j]) + ' = ' + p + j + p + wrdA
+            bns = bns.rstrip(' AND ')
+            sql = "SELECT * FROM meibotest WHERE " + bns
+
+        elif lst2ngs == 0:
+            sql = ("SELECT * FROM meibotest")
+
+        curs.execute(sql)
+        kekka = curs.fetchall()
+        for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in kekka:
+            print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
 
     else:
         value_search = None

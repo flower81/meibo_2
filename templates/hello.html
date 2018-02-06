@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='index.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/index.css')}}">
     <!-- この直下のCSSリンクはローカル確認用 -->
     <!-- <link rel="stylesheet" type="text/css" href="../static/css/index.css"> -->
     <meta charset="utf-8">
     <title>meibo test</title>
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{{url_for('static',filename='sidebar.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/sidebar.js')}}"></script>
   </head>
   <body>
     <!-- <div id="hoge"> -->
@@ -43,33 +43,33 @@
                 <div class="search-form">
                   <div class="search-content">
                     <span class="search-title">ID</span>
-                    <input class="search-type1" id="id-form" type="text">
+                    <input class="search-type1" id="id-form" type="text" name="sagasu">
                   </div>
                   <div class="search-content">
                     <span class="search-title">姓名(漢字)</span>
                     <input class="search-type3" id="FIRSTNAME-form" type="text" name="sagasu">
-                    <input class="search-type3" id="LASTNAME-form" type="text" >
+                    <input class="search-type3" id="LASTNAME-form" type="text" name="sagasu">
                   </div>
                   <div class="search-content">
                     <span class="search-title">姓名(かな)</span>
-                    <input class="search-type3" id="firstname-form" type="text">
-                    <input class="search-type3" id="lastname-form" type="text">
+                    <input class="search-type3" id="firstname-form" type="text" name="sagasu">
+                    <input class="search-type3" id="lastname-form" type="text" name="sagasu">
                   </div>
                   <div class="search-content">
                     <span class="search-title">入社日</span>
-                    <input class="search-type2" id="joined-from" type="date" max="9999-12-31">
+                    <input class="search-type2" id="joined-from" type="date" max="9999-12-31" name="sagasu">
                     <span>〜</span>
                     <input class="search-type2" id="joined-to" type="date" max="9999-12-31">
                   </div>
                   <div class="search-content">
                     <span class="search-title">誕生日</span>
-                    <input class="search-type2" id="birth-from" type="date" max="9999-12-31">
+                    <input class="search-type2" id="birth-from" type="date" max="9999-12-31" name="sagasu">
                     <spam>〜</span>
                     <input class="search-type2" id="birth-to" type="date" max="9999-12-31">
                   </div>
                   <div class="search-content">
                     <span class="search-title">年齢</span>
-                    <input class="search-type2" id="age-from" type="number" min="0">
+                    <input class="search-type2" id="age-from" type="number" min="0" name="sagasu">
                     <spam>〜</span>
                     <input class="search-type2" id="age-to" type="number" min="0">
                   </div>
@@ -127,7 +127,7 @@
     <!-- この直下のjs2つはローカル確認用 -->
     <!-- <script type="text/javascript" src="../static/js/particles.js"></script>
     <script type="text/javascript" src="../static/js/setting.js"></script> -->
-    <script type="text/javascript" src="{{url_for('static',filename='particles.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('static',filename='setting.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/particles.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/setting.js')}}"></script>
   </body>
 </html>
