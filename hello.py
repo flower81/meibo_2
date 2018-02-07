@@ -17,7 +17,7 @@ def hello():
     curs = conn.cursor()    #   mysqlと接続する時に使う
     kekka = ''      #   検索結果を格納する変数
     p = "'"     #   「'」を格納する変数
-    jokenlst = ['id','lastname','firstname','lstyomi','fstyomi','start','startTo','birth','birthTo','age']
+    jokenlst = ['id','lastname','firstname','lstyomi','fstyomi','start','startTo','birth','birthTo','age','ageTo']
     #   検索条件をリスト化
     glNgs = 0   #   GETした検索語句リスト(getlst)の長さ(要素数)を格納する変数
     dic = {}    #   検索語句と検索条件を結び辞書型にし、格納する変数
@@ -40,11 +40,13 @@ def hello():
         if lst2ngs > 1:
             if getlst[5] != '' and getlst[6] != '':
                 sql = "SELECT * FROM meibotest WHERE " + str(jokenlst[5]) + ' between ' + p + str(getlst[5]) + p + ' and ' + p + str(getlst[6]) + p
-                print(sql)
 
             elif getlst[7] != '' and getlst[8] != '':
                 sql = "SELECT * FROM meibotest WHERE " + str(jokenlst[7]) + ' between ' + p + str(getlst[7]) + p + ' and ' + p + str(getlst[8]) + p
-                print(sql)
+
+            elif getlst[9] != '' and getlst[10] != '':
+                sql = "SELECT * FROM meibotest WHERE " + str(jokenlst[9]) + ' between ' + p + str(getlst[9]) + p + ' and ' + p + str(getlst[10]) + p
+
             else:
                 for j in list02:
                     bns += str(dic[j]) + ' = ' + p + j + p + wrdA
@@ -60,7 +62,6 @@ def hello():
         elif lst2ngs == 0:
             sql = ("SELECT * FROM meibotest")
 
-        print('あれ')
         curs.execute(sql)
         kekka = curs.fetchall()
         for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in kekka:
