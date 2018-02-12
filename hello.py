@@ -76,6 +76,9 @@ def hello():
                             kekka=kekka
                             ) #変更
 
+@app.route('/setting')
+def setting():
+    return render_template('setting.html')
 ## おまじない
 if __name__ == "__main__":
     app.run(debug=True)

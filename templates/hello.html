@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/index.css')}}">
-    <!-- この直下のCSSリンクはローカル確認用 -->
-    <!-- <link rel="stylesheet" type="text/css" href="../static/css/index.css"> -->
-    <meta charset="utf-8">
-    <title>meibo test</title>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script type="text/javascript" src="{{url_for('static',filename='js/sidebar.js')}}"></script>
-  </head>
+{% extends "layout.html" %}
+{% block content %}
   <body>
     <!-- <div id="hoge"> -->
       <!-- ヘッダー -->
@@ -20,6 +10,7 @@
           </div>
           <div class="header-right">
             <p>slack連携テスト</p>
+            <a href="/setting">設定画面へ</a>
           </div>
         </div>
       </header>
@@ -130,4 +121,4 @@
     <script type="text/javascript" src="{{url_for('static',filename='js/particles.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static',filename='js/setting.js')}}"></script>
   </body>
-</html>
+{% endblock %}
