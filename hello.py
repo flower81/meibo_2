@@ -82,6 +82,16 @@ def setting():
 
 @app.route('/tsuika')
 def tsuika():
+    conn = MySQLdb.connect(
+            host='localhost',
+            user='root',
+            password='10baton',
+            db='meibo_db',
+            charset='utf8',
+        )
+
+
+
     return render_template('tsuika.html')
 
 ## おまじない
