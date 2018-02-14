@@ -79,6 +79,11 @@ def hello():
 @app.route('/setting')
 def setting():
     return render_template('setting.html')
+
+@app.route('/tsuika')
+def tsuika():
+    return render_template('tsuika.html')
+
 ## おまじない
 if __name__ == "__main__":
     app.run(debug=True)
