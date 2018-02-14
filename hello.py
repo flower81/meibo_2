@@ -3,18 +3,18 @@ import MySQLdb #追加
 
 app = Flask(__name__)
 
+conn = MySQLdb.connect(
+        host='localhost',
+        user='root',
+        password='10baton',
+        db='meibo_db',
+        charset='utf8',
+    )
+curs = conn.cursor()    #   mysqlと接続する時に使う
+
+
 @app.route('/', methods=['POST','GET'])
 def hello():
-    #db setting
-    conn = MySQLdb.connect(
-            host='localhost',
-            user='root',
-            password='10baton',
-            db='meibo_db',
-            charset='utf8',
-        )
-
-    curs = conn.cursor()    #   mysqlと接続する時に使う
     kekka = ''      #   検索結果を格納する変数
     p = "'"     #   「'」を格納する変数
     jokenlst = ['id','lastname','firstname','lstyomi','fstyomi','start','startTo','birth','birthTo','age','ageTo']
@@ -83,6 +83,16 @@ def setting():
 @app.route('/tsuika')
 def tsuika():
     return render_template('tsuika.html')
+
+@app.route('/update')
+def update():
+    return render_template('update.html')
+
+@app.route('/delete')
+def delete():
+    return render_template('delete.html')
+
+
 
 ## おまじない
 if __name__ == "__main__":
