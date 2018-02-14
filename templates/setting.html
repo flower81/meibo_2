@@ -1,24 +1,36 @@
+<!-- <html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/index.css')}}"> -->
+    <!-- この直下のCSSリンクはローカル確認用 -->
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+    <meta charset="utf-8">
+    <title>meibo test</title>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/sidebar.js')}}"></script>  </head>
+  </head> -->
 {% extends "layout.html" %}
 {% block content %}
-<body>
-  <header>
-    <div class="header-wrapper">
-      <div class="header-left">
-        <h1>Setting Page</h1>
+  <body>
+    <header>
+      <div class="header-wrapper">
+        <div class="header-left">
+          <h1>Setting Page</h1>
+        </div>
+        <div class="header-right">
+          <p>slack連携テスト</p>
+        </div>
       </div>
-      <div class="header-right">
-        <p>slack連携テスト</p>
+    </header>
+    <div class="contents">
+      <div class="container2">
+        <h2><a href="/tsuika">追加する</a></h2>
+        <h2>更新/修正する</h2>
+        <h2>削除する</h2>
+        <h2><a href="/">トップ画面に戻る</a></h2>
       </div>
     </div>
-  </header>
-  <div class="contents">
-    <div class="container2">
-      <h2><a href="/tsuika">追加する</a></h2>
-      <h2>更新/修正する</h2>
-      <h2>削除する</h2>
-      <h2><a href="/">トップ画面に戻る</a></h2>
-    </div>
-  </div>
 
-</body>
+  </body>
 {% endblock %}
+<!-- </html> -->
