@@ -1,4 +1,49 @@
 {% extends "layout.html" %}
 {% block content %}
+<body>
+  <header>
+    <div class="header-wrapper">
+      <div class="header-left">
+        <h1>Check The Contents</h1>
+      </div>
+      <div class="header-right">
+        <p>slack連携テスト</p>
+      </div>
+    </div>
+  </header>
+<div class= "main">
+  <div class="contents">
+    <!-- ここにformが入るかも -->
+      <div class="search">
+        <div class="container">
+          <div class="search-form">
+            <div class="search-content">
+              <span class="search-title">ID</span>
+            </div>
+            <div class="search-content">
+              <span class="search-title">姓名(漢字)</span>
+            </div>
+            <div class="search-content">
+              <span class="search-title">姓名(カナ)</span>
+            </div>
+            <div class="search-content">
+              <span class="search-title">入社日</span>
+            </div>
+            <div class="search-content">
+              <span class="search-title">誕生日</span>
+            </div>
+            <div class="search-content">
+              <span class="search-title">年齢</span>
+            </div>
+          </div>
+          <div class="btn-form">
+            <button class="btn-2 search-button" type="button">追加</button>
+            <button class="btn-2 reset-button" type="button" onclick="location.href='/add'">入力画面へ戻る</button>
+          </div>
+        </div>
+      </div>
+    <!-- ここでformが終わるかも -->
+  </div>
 <h1>hello,python</h1>
+</body>
 {% endblock %}
