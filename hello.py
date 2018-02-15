@@ -88,6 +88,10 @@ def add():
 
     return render_template('add.html')
 
+@app.route('/add_check')
+def add_check():
+    return render_template('add_check.html')
+
 @app.route('/update')
 def update():
     return render_template('update.html')
