@@ -80,9 +80,9 @@ def hello():
 def setting():
     return render_template('setting.html')
 
-@app.route('/tsuika')
-def tsuika():
-    return render_template('tsuika.html')
+@app.route('/add')
+def add():
+    return render_template('add.html')
 
 @app.route('/update')
 def update():
