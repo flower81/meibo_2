@@ -91,7 +91,7 @@ def add():
         print(addlist)
     return render_template('add.html')
 
-@app.route('/add_check')
+@app.route('/add_check',methods=['POST','GET'])
 def add_check():
     if request.method == 'POST':
         addlist = request.form.getlist('tsuika')
