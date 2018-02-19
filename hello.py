@@ -68,7 +68,7 @@ def hello():
             print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
 
     else:
-        value_search = None
+        getlst = None
 
     #return name
     return render_template('hello.html',
@@ -80,17 +80,24 @@ def hello():
 def setting():
     return render_template('setting.html')
 
-@app.route('/add', methods=['POST','GET'])
+@app.route('/add',methods=['POST', 'GET'])
 def add():
     if request.method == 'POST':
         addlist = request.form.getlist('tsuika') #   入力された検索語句をリスト型として取得
         print(addlist)
-        print('test')
-
+#        print('test')
+    else:
+        addlist = 'no list'
+        print(addlist)
     return render_template('add.html')
 
 @app.route('/add_check')
 def add_check():
+    if request.method == 'POST':
+        addlist = request.form.getlist('tsuika')
+        print(addlist)
+    else:
+        addlist = 'no list'
     return render_template('add_check.html')
 
 @app.route('/update')
