@@ -85,6 +85,7 @@ def add():
     if request.method == 'POST':
         addlist = request.form.getlist('tsuika') #   入力された検索語句をリスト型として取得
         print(addlist)
+        print('test')
 
     return render_template('add.html')
 
