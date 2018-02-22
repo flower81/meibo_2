@@ -17,25 +17,35 @@
       <div class="search">
         <div class="container">
           <div class="search-form">
-            <div class="search-content">
-              <span class="search-title">ID</span>
-            </div>
-            <div class="search-content">
-              <span class="search-title">姓名(漢字)</span>
-            </div>
-            <div class="search-content">
-              <span class="search-title">姓名(カナ)</span>
-            </div>
-            <div class="search-content">
-              <span class="search-title">入社日</span>
-            </div>
-            <div class="search-content">
-              <span class="search-title">誕生日</span>
-            </div>
-            <div class="search-content">
-              <span class="search-title">年齢</span>
-            </div>
-            <h2>{{ addlist }}</h2>
+            <h1>10バトンの新しいメンバーです!!</h1>
+            <table class="result-table">
+              {% if addlist %}
+              <tr>
+                <td>ID</td>
+                <td>{{ addlist[0] }}</td>
+              </tr>
+              <tr>
+                <td>名前</td>
+                <td>{{ addlist[1] }} {{ addlist[2] }}</td>
+              </tr>
+              <tr>
+                <td>読み</td>
+                <td>{{ addlist[3] }} {{ addlist[4] }}</td>
+              </tr>
+              <tr>
+                <td>入社日</td>
+                <td>{{ addlist[5] }}</td>
+              </tr>
+              <tr>
+                <td>誕生日</td>
+                <td>{{ addlist[6] }}</td>
+              </tr>
+              <tr>
+                <td>年齢</td>
+                <td>{{ addlist[7] }}</td>
+              </tr>
+            </table>
+            {% endif %}
           </div>
           <div class="btn-form">
             <button class="btn-2 search-button" type="button">追加</button>

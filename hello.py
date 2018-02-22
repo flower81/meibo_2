@@ -100,19 +100,15 @@ def add():
         word7 = p + str(addlist[7]) + p
 
         sql = 'INSERT INTO meibotest (id, lastname, firstname, lstyomi, fstyomi, start, birth, age) VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})'.format(word0, word1, word2, word3, word4, word5, word6, word7)
-
-#        nagasa = len(addlist)
-#        word = (addlist[0], addlist[1], addlist[2], addlist[3], addlist[4], addlist[5], addlist[6], addlist[7])
-#        print(word)
         print(sql)
-        curs.execute(sql)
-        conn.commit()
+#        curs.execute(sql)
+#        conn.commit()
 
-        curs.execute('SELECT * FROM meibotest')
-        result = curs.fetchall()
+#        curs.execute('SELECT * FROM meibotest')
+#        result = curs.fetchall()
 
-        for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result:
-            print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
+#        for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result:
+#            print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
 
 #    else:
 #        addlist = 'no list'
@@ -122,12 +118,24 @@ def add():
 
 @app.route('/add_check',methods=['POST','GET'])
 def add_check():
+    addlist = []
+    checkwd = ''
     if request.method == 'POST':
         addlist = request.form.getlist('tsuika')
         print(addlist)
+
+        checkwd = '''
+        ID 　　{0}'\n'
+        名前　　{1} {2}\n
+        読み　　{3} {4}\n
+        入社日　{5}\n
+        誕生日　{6}\n
+        年齢　　{7}
+        '''.format(addlist[0], addlist[1], addlist[2], addlist[3], addlist[4], addlist[5], addlist[6], addlist[7])
+
     else:
         addlist = 'no list'
-    return render_template('add_check.html')
+    return render_template('add_check.html', addlist=addlist)
 
 @app.route('/update')
 def update():

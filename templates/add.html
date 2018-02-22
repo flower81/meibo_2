@@ -13,7 +13,7 @@
   </header>
   <div class= "main">
     <div class="contents">
-      <form name="test" action="/add" method="post">
+      <form name="test" action="/add_check" method="post">
         <div class="search">
           <div class="container">
             <div class="search-form">
@@ -45,13 +45,18 @@
               </div>
             </div>
             <div class="btn-form">
-              <!--button class="btn-2 search-button" type="button" onclick="add_check();location.href='/add_check';">確認画面</button>
+              <button class="btn-2 search-button" type="button" onclick="add_check('test', '/add_check', 'POST');">確認画面</button>
               <script type="text/javascript">
-                function add_check(){
-                  document.test.submit()
+                function add_check(formname, url, method){
+                  var f = document.forms[formname];
+                  f.method = method;
+                  f.action = url;
+                  f.submit();
+
+                  return true;
                 }
-              </script-->
-              <button class="btn-2 search-button" type="submit">追加</button>
+              </script>
+              <!--button class="btn-2 search-button" type="submit">追加</button-->
               <button class="btn-2 reset-button" type="submit">リセット</button>
             </div>
             {% if result %}
