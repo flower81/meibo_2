@@ -82,8 +82,10 @@ def setting():
 
 @app.route('/add',methods=['POST', 'GET'])
 def add():
-    tksql = 'INSERT INTO meibotest (id, lastname, firstname, lstyomi, fstyomi, start, birth, age) VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
+    sql = ''
+    addlist = []
     p = "'"
+    result = ''
     if request.method == 'POST':
         addlist = request.form.getlist('tsuika') #   入力された検索語句をリスト型として取得
         print(addlist)
@@ -96,6 +98,7 @@ def add():
         word5 = p + str(addlist[5]) + p
         word6 = p + str(addlist[6]) + p
         word7 = p + str(addlist[7]) + p
+
         sql = 'INSERT INTO meibotest (id, lastname, firstname, lstyomi, fstyomi, start, birth, age) VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})'.format(word0, word1, word2, word3, word4, word5, word6, word7)
 
 #        nagasa = len(addlist)
@@ -108,13 +111,14 @@ def add():
         curs.execute('SELECT * FROM meibotest')
         result = curs.fetchall()
 
-#        for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result:
-#            print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
+        for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result:
+            print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
 
-    else:
-        addlist = 'no list'
-        print(addlist)
-    return render_template('add.html')
+#    else:
+#        addlist = 'no list'
+#        print(addlist)
+#        sql = '再度入力してください'
+    return render_template('add.html', result=result)
 
 @app.route('/add_check',methods=['POST','GET'])
 def add_check():
