@@ -124,15 +124,6 @@ def add_check():
         addlist = request.form.getlist('tsuika')
         print(addlist)
 
-        checkwd = '''
-        ID 　　{0}'\n'
-        名前　　{1} {2}\n
-        読み　　{3} {4}\n
-        入社日　{5}\n
-        誕生日　{6}\n
-        年齢　　{7}
-        '''.format(addlist[0], addlist[1], addlist[2], addlist[3], addlist[4], addlist[5], addlist[6], addlist[7])
-
     else:
         addlist = 'no list'
     return render_template('add_check.html', addlist=addlist)
@@ -144,6 +135,10 @@ def update():
 @app.route('/delete')
 def delete():
     return render_template('delete.html')
+
+@app.route('/complete')
+def complete():
+    return render_template('complete.html')
 
 
 
