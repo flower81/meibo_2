@@ -13,14 +13,17 @@ conn = MySQLdb.connect(
 
 curs = conn.cursor()    #   mysqlと接続する時に使う
 addlist = []
+p = "'"     #   「'」を格納する変数
+getid = ''
+
+
 
 
 @app.route('/', methods=['POST','GET'])
 def hello():
-    kekka = ''      #   検索結果を格納する変数
-    p = "'"     #   「'」を格納する変数
     jokenlst = ['id','lastname','firstname','lstyomi','fstyomi','start','startTo','birth','birthTo','age','ageTo']
     #   検索条件をリスト化
+    kekka = ''      #   検索結果を格納する変数
     glNgs = 0   #   GETした検索語句リスト(getlst)の長さ(要素数)を格納する変数
     dic = {}    #   検索語句と検索条件を結び辞書型にし、格納する変数
     bns = ''    #   文章(sql文の後半)を格納する変数
@@ -108,13 +111,31 @@ def update():
 def delete():
     return render_template('delete.html')
 
+#@app.route('/delete_check')
+@app.route('/delete_check', methods=['POST'])
+def delete_check():
+    if request.method == 'POST':
+        global getid
+        getid = request.form['sakujo']
+        print(getid)
+
+        sql = "SELECT * FROM meibotest WHERE id = " + p + str(getid) + p
+        print(sql)
+
+        curs.execute(sql)
+        result = curs.fetchall()
+
+        for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result:
+            print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
+
+    return render_template('delete_check.html', result=result)
+
 @app.route('/complete')
 def complete():
     sql = ''
     p = "'"
-    result = ''
-    print(addlist)
-    if addlist != '':
+    #result = ''
+    if addlist != []:
         sql = 'INSERT INTO meibotest (id, lastname, firstname, lstyomi, fstyomi, start, birth, age) VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})'.format(addlist[0], addlist[1], addlist[2], addlist[3], addlist[4], addlist[5], addlist[6], addlist[7])
         word0 = p + str(addlist[0]) + p
         word1 = p + str(addlist[1]) + p
@@ -129,9 +150,17 @@ def complete():
         print(sql)
         curs.execute(sql)
         conn.commit()
+        conn.close()
+
+    elif getid != '':
+        dltsql = 'DELETE FROM meibotest WHERE id = ' + p + getid + p
+
+        curs.execute(dltsql)
+        conn.commit()
+        print(str(getid) + 'を削除しました。')
 
     else:
-        print('追加は失敗しました')
+        print('失敗しました')
 
     return render_template('complete.html')
 
