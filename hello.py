@@ -10,6 +10,7 @@ conn = MySQLdb.connect(
         db='meibo_db',
         charset='utf8',
     )
+
 curs = conn.cursor()    #   mysqlと接続する時に使う
 addlist = []
 
@@ -84,44 +85,10 @@ def setting():
 #@app.route('/add',methods=['POST', 'GET'])
 @app.route('/add')
 def add():
-#    sql = ''
-#    addlist = []
-#    p = "'"
-#    result = ''
-#    if request.method == 'POST':
-#        addlist = request.form.getlist('tsuika') #   入力された検索語句をリスト型として取得
-#        print(addlist)
-#        sql = 'INSERT INTO meibotest (id, lastname, firstname, lstyomi, fstyomi, start, birth, age) VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})'.format(addlist[0], addlist[1], addlist[2], addlist[3], addlist[4], addlist[5], addlist[6], addlist[7])
-#        word0 = p + str(addlist[0]) + p
-#        word1 = p + str(addlist[1]) + p
-#        word2 = p + str(addlist[2]) + p
-#        word3 = p + str(addlist[3]) + p
-#        word4 = p + str(addlist[4]) + p
-#        word5 = p + str(addlist[5]) + p
-#        word6 = p + str(addlist[6]) + p
-#        word7 = p + str(addlist[7]) + p
-
-#        sql = 'INSERT INTO meibotest (id, lastname, firstname, lstyomi, fstyomi, start, birth, age) VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})'.format(word0, word1, word2, word3, word4, word5, word6, word7)
-#        print(sql)
-#        curs.execute(sql)
-#        conn.commit()
-
-#        curs.execute('SELECT * FROM meibotest')
-#        result = curs.fetchall()
-
-#        for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result:
-#            print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
-
-#    else:
-#        addlist = 'no list'
-#        print(addlist)
-#        sql = '再度入力してください'
     return render_template('add.html')
 
 @app.route('/add_check', methods=['POST','GET'])
 def add_check():
-    #addlist = []
-    checkwd = ''
     if request.method == 'POST':
         global addlist
         addlist = request.form.getlist('tsuika')
@@ -130,6 +97,7 @@ def add_check():
     else:
         addlist = 'no list'
         print(addlist)
+
     return render_template('add_check.html', addlist=addlist)
 
 @app.route('/update')
@@ -147,7 +115,6 @@ def complete():
     result = ''
     print(addlist)
     if addlist != '':
-        #addlist = request.form.getlist['add_check']
         sql = 'INSERT INTO meibotest (id, lastname, firstname, lstyomi, fstyomi, start, birth, age) VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})'.format(addlist[0], addlist[1], addlist[2], addlist[3], addlist[4], addlist[5], addlist[6], addlist[7])
         word0 = p + str(addlist[0]) + p
         word1 = p + str(addlist[1]) + p

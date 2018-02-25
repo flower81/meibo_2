@@ -48,24 +48,12 @@
             </table>
           </div>
           <div class="btn-form">
-            <!--button class="btn-2 search-button" type="button" onclick="location.href='/complete'">追加</button-->
-            <button class="btn-2 search-button" type="button" onclick="add_complete('add_check', '/complete', 'POST')">追加</button>
-            <script type="text/javascript">
-              function add_complete(formname,url, method){
-                var f = document.forms[formname];
-                f.method = method;
-                f.submit();
-                f.action = url;
-
-                return true
-              }
-            </script>
+            <button class="btn-2 search-button" type="button" onclick="location.href='/complete'">追加</button>
             <button class="btn-2 reset-button" type="button" onclick="location.href='/add'">入力画面へ戻る</button>
           </div>
         </div>
       </div>
     </form>
   </div>
-<h1>hello,python</h1>
 </body>
 {% endblock %}

@@ -45,7 +45,7 @@
               </div>
             </div>
             <div class="btn-form">
-              <button class="btn-2 search-button" type="button" onclick="add_check('test', '/add_check', 'POST');">確認画面</button>
+              <button class="btn-2 search-button" type="button" onclick="add_check('test', '/add_check', 'POST');">確認</button>
               <script type="text/javascript">
                 function add_check(formname, url, method){
                   var f = document.forms[formname];
@@ -57,7 +57,7 @@
                 }
               </script>
               <!--button class="btn-2 search-button" type="submit">追加</button-->
-              <button class="btn-2 reset-button" type="submit">リセット</button>
+              <button class="btn-2 reset-button" type="button" onclick="location.href='/setting'">設定メニュー</button>
             </div>
             {% if result %}
             <h2>{{ result }}</h2>
