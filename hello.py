@@ -15,6 +15,7 @@ curs = conn.cursor()    #   mysqlと接続する時に使う
 addlist = []
 p = "'"     #   「'」を格納する変数
 getid = ''
+upid = ''
 
 
 
@@ -107,11 +108,14 @@ def add_check():
 def update():
     result = ''
     if request.method == 'POST':
+        testnum = ''
+        global upid
         upid = request.form['shusei']
         upcontets = request.form.getlist('koshin')
-        test = type(upid)
-        print(test)
+
+
         if upid != '':
+            testnum = upid
             print(str(upid) + 'shuseiを得たよ')
 
             sql = "SELECT * FROM meibotest WHERE id = " + p + str(upid) + p
@@ -123,10 +127,12 @@ def update():
             for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result:
                 print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
         elif upcontets != []:
+            print(upid)
             print(str(upcontets) + 'koshinを得たよ')
-#    elif request.method == 'POST':
-#        upcontets = request.form.getlist('koshin')
-#        print(str(upcontets) + 'koshinを得たよ')
+            sql = "UPDATE meibotest set id = " + upcontets[0] + " WHERE id = " + p + testnum + p
+            print(sql)
+            #   upidがelif文内でも格納されない…2018/02/26
+            curs.execute(sql)
 
     else:
         upid = None
