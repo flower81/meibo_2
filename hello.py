@@ -103,9 +103,26 @@ def add_check():
 
     return render_template('add_check.html', addlist=addlist)
 
-@app.route('/update')
+@app.route('/update', methods=['POST','GET'])
 def update():
-    return render_template('update.html')
+    print('はジャミルよ')
+    result = ''
+    if request.method == 'POST':
+        upid = request.form['shusei']
+        print(upid)
+
+        sql = "SELECT * FROM meibotest WHERE id = " + p + str(upid) + p
+        print(sql)
+
+        curs.execute(sql)
+        result = curs.fetchall()
+
+        for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result:
+            print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
+    else:
+        upid = None
+
+    return render_template('update.html', result=result)
 
 @app.route('/delete')
 def delete():
