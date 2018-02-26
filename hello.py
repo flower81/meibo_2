@@ -105,20 +105,29 @@ def add_check():
 
 @app.route('/update', methods=['POST','GET'])
 def update():
-    print('はジャミルよ')
     result = ''
     if request.method == 'POST':
         upid = request.form['shusei']
-        print(upid)
+        upcontets = request.form.getlist('koshin')
+        test = type(upid)
+        print(test)
+        if upid != '':
+            print(str(upid) + 'shuseiを得たよ')
 
-        sql = "SELECT * FROM meibotest WHERE id = " + p + str(upid) + p
-        print(sql)
+            sql = "SELECT * FROM meibotest WHERE id = " + p + str(upid) + p
+            print(sql)
 
-        curs.execute(sql)
-        result = curs.fetchall()
+            curs.execute(sql)
+            result = curs.fetchall()
 
-        for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result:
-            print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
+            for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result:
+                print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
+        elif upcontets != []:
+            print(str(upcontets) + 'koshinを得たよ')
+#    elif request.method == 'POST':
+#        upcontets = request.form.getlist('koshin')
+#        print(str(upcontets) + 'koshinを得たよ')
+
     else:
         upid = None
 
