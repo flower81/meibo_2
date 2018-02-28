@@ -246,3 +246,11 @@ footer {
   height: 250px;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.link-button {
+  color: white;
+}
+
+.link-button:hover{
+  color: red;
+}
