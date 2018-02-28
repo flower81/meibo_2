@@ -16,7 +16,7 @@ addlist = []
 p = "'"     #   「'」を格納する変数
 getid = ''
 upid = ''
-
+result = ''
 
 
 
@@ -30,7 +30,14 @@ def hello():
     bns = ''    #   文章(sql文の後半)を格納する変数
     wrdA = ' AND '  #   見た通り
 
-
+    conn = MySQLdb.connect(
+            host='localhost',
+            user='root',
+            password='10baton',
+            db='meibo_db',
+            charset='utf8',
+        )
+        
     if request.method == 'POST':
         getlst = request.form.getlist('sagasu') #   入力された検索語句をリスト型として取得
         print(getlst)
@@ -104,40 +111,27 @@ def add_check():
 
     return render_template('add_check.html', addlist=addlist)
 
-@app.route('/update', methods=['POST','GET'])
+@app.route('/update')
 def update():
-    result = ''
+    return render_template('update.html')
+
+@app.route('/update_check', methods=['POST','GET'])
+def update_check():
+    result= ''
     if request.method == 'POST':
-        testnum = ''
         global upid
         upid = request.form['shusei']
-        upcontets = request.form.getlist('koshin')
-
-
-        if upid != '':
-            testnum = upid
-            print(str(upid) + 'shuseiを得たよ')
-
-            sql = "SELECT * FROM meibotest WHERE id = " + p + str(upid) + p
-            print(sql)
-
+        sql = "SELECT * FROM meibotest WHERE id = " + p + str(upid) + p
+        try:
             curs.execute(sql)
             result = curs.fetchall()
-
             for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result:
                 print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
-        elif upcontets != []:
-            print(upid)
-            print(str(upcontets) + 'koshinを得たよ')
-            sql = "UPDATE meibotest set id = " + upcontets[0] + " WHERE id = " + p + testnum + p
-            print(sql)
-            #   upidがelif文内でも格納されない…2018/02/26
-            curs.execute(sql)
-
+        except:
+            print('sql動作は失敗しました')
     else:
         upid = None
-
-    return render_template('update.html', result=result)
+    return render_template('update_check.html', result=result)
 
 @app.route('/delete')
 def delete():
