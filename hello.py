@@ -17,6 +17,7 @@ p = "'"     #   「'」を格納する変数
 getid = ''
 upid = ''
 result = ''
+upcon = []
 
 
 
@@ -37,7 +38,7 @@ def hello():
             db='meibo_db',
             charset='utf8',
         )
-        
+
     if request.method == 'POST':
         getlst = request.form.getlist('sagasu') #   入力された検索語句をリスト型として取得
         print(getlst)
@@ -118,17 +119,28 @@ def update():
 @app.route('/update_check', methods=['POST','GET'])
 def update_check():
     result= ''
+    key = 0
     if request.method == 'POST':
         global upid
         upid = request.form['shusei']
+        print(upid, 'ここ')
         sql = "SELECT * FROM meibotest WHERE id = " + p + str(upid) + p
         try:
             curs.execute(sql)
             result = curs.fetchall()
+            key = 1
             for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result:
                 print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
         except:
             print('sql動作は失敗しました')
+
+#        if key == 1:
+#            upcon = request.form.getlist('kosin')
+#            print(upcon)
+
+#        else:
+#            print('失敗しましたー')
+
     else:
         upid = None
     return render_template('update_check.html', result=result)
@@ -184,6 +196,10 @@ def complete():
         curs.execute(dltsql)
         conn.commit()
         print(str(getid) + 'を削除しました。')
+#       ↓↓↓消す
+#    elif upid != '':
+#        print(upid, 'ここまで来たで')
+
 
     else:
         print('失敗しました')
