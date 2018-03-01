@@ -8,8 +8,12 @@ body {
   background-image: url(../image/background1.png);
   background-size: 20% auto;
   margin: 0px;
+
+}
+
+.body {
   width: 1300px;
-  height: 1500px;
+  height: 1500px;  
 }
 
 header {
