@@ -8,8 +8,12 @@ body {
   background-image: url(../image/background1.png);
   background-size: 20% auto;
   margin: 0px;
+
+}
+
+.body {
   width: 1300px;
-  height: 1500px;
+  height: 1500px;  
 }
 
 header {
@@ -245,4 +249,16 @@ footer {
   width: 1300px;
   height: 250px;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.link-button {
+  color: white;
+}
+
+.link-button:hover{
+  color: red;
+}
+
+.return {
+  margin-right: 20px;
 }
