@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+{% block content %}
+<body>
+  <header>
+    <div class="header-wrapper">
+      <div class="header-left">
+        <h1>Last Confirmation</h1>
+      </div>
+      <div class="header-right">
+        <p>slack連携テスト</p>
+      </div>
+    </div>
+  </header>
+  <div class="main">
+
+  <div class="contents">
+    <form class="test" action="/complete" method="post">
+      <div class="search">
+        <div class="container">
+          <div class="search-form">
+            <h1>修正前</h1>
+            <table class="table-container">
+              <tr>
+                <th>ID</th>
+                <th>姓(漢字)</th>
+                <th>名(漢字)</th>
+                <th>姓(カナ)</th>
+                <th>名(カナ)</th>
+                <th>入社日</th>
+                <th>誕生日</th>
+                <th>年齢</th>
+              </tr>
+              <tr class="result-table">
+                {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result %}
+                <td>{{ id }}</td>
+                <td>{{ lastname }}</td>
+                <td>{{ firstname }}</td>
+                <td>{{ lstyomi }}</td>
+                <td>{{ fstyomi }}</td>
+                <td>{{ start }}</td>
+                <td>{{ birth }}</td>
+                <td>{{ age }}</td>
+              </tr>
+              {% endfor %}
+            </table>
+            <h1>修正後</h1>
+            <table class="table-container">
+              <tr class="result-table">
+                {% if dic %}
+                <td>{{ dic["id"] }}</td>
+                <td>{{ dic["lastname"] }}</td>
+                <td>{{ dic["firstname"] }}</td>
+                <td>{{ dic["lstyomi"] }}</td>
+                <td>{{ dic["fstyomi"] }}</td>
+                <td>{{ dic["start"] }}</td>
+                <td>{{ dic["birth"] }}</td>
+                <td>{{ dic["age"] }}</td>
+                {% endif %}
+            </table>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+</body>
+{% endblock %}

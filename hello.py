@@ -18,8 +18,7 @@ getid = ''
 upid = ''
 result = ''
 upcon = []
-
-
+dic = {}    #   検索語句と検索条件を結び辞書型にし、格納する変数
 
 @app.route('/', methods=['POST','GET'])
 def hello():
@@ -27,7 +26,6 @@ def hello():
     #   検索条件をリスト化
     kekka = ''      #   検索結果を格納する変数
     glNgs = 0   #   GETした検索語句リスト(getlst)の長さ(要素数)を格納する変数
-    dic = {}    #   検索語句と検索条件を結び辞書型にし、格納する変数
     bns = ''    #   文章(sql文の後半)を格納する変数
     wrdA = ' AND '  #   見た通り
 
@@ -134,16 +132,35 @@ def update_check():
         except:
             print('sql動作は失敗しました')
 
-#        if key == 1:
-#            upcon = request.form.getlist('kosin')
-#            print(upcon)
-
-#        else:
-#            print('失敗しましたー')
 
     else:
         upid = None
     return render_template('update_check.html', result=result)
+
+@app.route('/last_check', methods=['POST','GET'])
+def last_check():
+    jokenlst = ['id','lastname','firstname','lstyomi','fstyomi','start','birth','age']
+
+    if request.method == 'POST':
+        upcon = request.form.getlist('kosin')
+        print(upcon)
+        sql = "SELECT * FROM meibotest WHERE id = " + p + str(upid) + p
+        try:
+            curs.execute(sql)
+            result = curs.fetchall()
+        except:
+            print('sql動作は失敗しました')
+        ucNgs = len(upcon)
+        for i in range(ucNgs):
+            w = upcon[i]
+            nn = jokenlst[i]
+            dic[nn] = w
+        print(dic)
+
+    else:
+        upcon = None
+
+    return render_template('last_check.html', upcon=upcon, result=result, dic=dic)
 
 @app.route('/delete')
 def delete():

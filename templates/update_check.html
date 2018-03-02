@@ -15,7 +15,7 @@
     <div id="hoge">
     </div>
     <div class="contents">
-      <form class="test" action="/complete" method="post">
+      <form name="test" action="/last_check" method="post">
         <div class="search">
           <div class="container">
             <div class="search-form">
@@ -73,9 +73,9 @@
               </div>
             </div>
             <div class="btn-form">
-              <button class="btn-2 search-button" type="button" onclick="update_suruyo('test', '/complete', 'POST')">更新</button>
+              <button class="btn-2 search-button" type="button" onclick="last_check('test', '/last_check', 'POST');">更新</button>
               <script type="text/javascript">
-                function update_suruyo(formname, url, method){
+                function last_check(formname, url, method){
                   var f = document.forms[formname];
                   f.method = method;
                   f.action = url;
