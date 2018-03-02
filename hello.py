@@ -117,31 +117,30 @@ def update():
 @app.route('/update_check', methods=['POST','GET'])
 def update_check():
     result= ''
-    key = 0
+    miss = ''
     if request.method == 'POST':
         global upid
         upid = request.form['shusei']
-        print(upid, 'ここ')
         sql = "SELECT * FROM meibotest WHERE id = " + p + str(upid) + p
+
         try:
             curs.execute(sql)
             result = curs.fetchall()
-            key = 1
             for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result:
                 print(id, lastname, firstname, lstyomi, fstyomi, start, birth, age)
         except:
             print('sql動作は失敗しました')
 
-
     else:
         upid = None
-    return render_template('update_check.html', result=result)
+    return render_template('update_check.html', result=result, miss=miss)
 
 @app.route('/last_check', methods=['POST','GET'])
 def last_check():
     jokenlst = ['id','lastname','firstname','lstyomi','fstyomi','start','birth','age']
 
     if request.method == 'POST':
+        global upcon
         upcon = request.form.getlist('kosin')
         print(upcon)
         sql = "SELECT * FROM meibotest WHERE id = " + p + str(upid) + p
@@ -154,6 +153,7 @@ def last_check():
         for i in range(ucNgs):
             w = upcon[i]
             nn = jokenlst[i]
+            global dic
             dic[nn] = w
         print(dic)
 
@@ -213,10 +213,14 @@ def complete():
         curs.execute(dltsql)
         conn.commit()
         print(str(getid) + 'を削除しました。')
-#       ↓↓↓消す
-#    elif upid != '':
-#        print(upid, 'ここまで来たで')
 
+    elif upcon != []:
+        print('たどり着いた', dic)
+        sql = "UPDATE meibotest SET " + "id = " + str(dic['id']) + " WHERE id = " + str(upid)
+        print(sql)
+        curs.execute(sql)
+        conn.commit()
+        print(str(upid) + "を" + str(dic['id'] + 'に更新しました。'))
 
     else:
         print('失敗しました')
