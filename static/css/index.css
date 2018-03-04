@@ -13,7 +13,7 @@ body {
 
 .body {
   width: 1300px;
-  height: 1500px;  
+  height: 1500px;
 }
 
 header {
@@ -256,9 +256,15 @@ footer {
 }
 
 .link-button:hover{
-  color: red;
+  color: #F704AE;
 }
 
 .return {
   margin-right: 20px;
+}
+
+.setting-contents {
+  margin: 70px auto;
+  display: inline-block;
+  vertical-align: middle;
 }
