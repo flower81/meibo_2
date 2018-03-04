@@ -27,6 +27,7 @@
       <form name="test" action="/add_check" method="post">
         <div class="search">
           <div class="container">
+            <h3 class="page-title">あなたのプロフィールを入力してください</h3>
             <div class="search-form">
               <div class="search-content">
                 <span class="search-title">ID</span>
@@ -55,21 +56,23 @@
                 <input class="search-type2" id="age-from" type="number" min="0" name="tsuika">
               </div>
             </div>
-            <div class="btn-form">
-              <button class="btn-2 search-button" type="button" onclick="add_check('test', 'add_check.html', 'POST');">確認</button>
-              <script type="text/javascript">
-                function add_check(formname, url, method){
-                  var f = document.forms[formname];
-                  f.method = method;
-                  f.action = url;
-                  f.submit();
+            <div class="btn-container">
+              <div class="btn-form">
+                <button class="btn-2 search-button" type="button" onclick="add_check('test', 'add_check.html', 'POST');">確認</button>
+                <script type="text/javascript">
+                  function add_check(formname, url, method){
+                    var f = document.forms[formname];
+                    f.method = method;
+                    f.action = url;
+                    f.submit();
 
-                  return true;
-                }
-              </script>
-              <!--button class="btn-2 search-button" type="submit">追加</button-->
-              <button class="btn-2 reset-button" type="button" onclick="location.href='setting.html'">設定メニュー</button>
-            </div>
+                    return true;
+                  }
+                </script>
+                <!--button class="btn-2 search-button" type="submit">追加</button-->
+                <button class="btn-2 reset-button" type="button" onclick="location.href='setting.html'">設定メニュー</button>
+              </div>
+          </div>
           </div>
         </div>
       </form>
