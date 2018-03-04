@@ -115,7 +115,7 @@ header {
 }
 
 .search-form{
-  height: 260px;
+  /* height: 260px; */
   width: 560px;
   padding: 20px 30px 0px 30px;
   margin: 0px auto;
@@ -123,6 +123,10 @@ header {
 
 .search-content {
   margin: 10px 0px;
+}
+
+.btn-container {
+  margin-top: 35px;
 }
 
 .search-type1{
@@ -267,4 +271,9 @@ footer {
   margin: 70px auto;
   display: inline-block;
   vertical-align: middle;
+}
+
+.page-title {
+  margin: 0px;
+  padding-top: 30px;
 }
