@@ -13,7 +13,7 @@ conn = MySQLdb.connect(
     )
 
 def post_slack(message):
-    token = "xoxb-270694051571-0t6GZJ0j0uBgaN62Kgt1ey42"
+    token = ""
     sc = SlackClient(token)
     sc.api_call(
         "chat.postMessage",
@@ -229,7 +229,7 @@ def complete():
         print(sql)
         curs.execute(sql)
         conn.commit()
-        conn.close()
+        conn.close()    #この変修正必要
         post_slack('追加したよ')
 
     elif getid != '':
