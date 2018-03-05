@@ -18,7 +18,9 @@ getid = ''
 upid = ''
 result = ''
 upcon = []
-dic = {}    #   検索語句と検索条件を結び辞書型にし、格納する変数
+dic = {}
+dic_check = {}    #   検索語句と検索条件を結び辞書型にし、格納する変数
+dic_com = {}
 
 @app.route('/', methods=['POST','GET'])
 def hello():
@@ -138,7 +140,6 @@ def update_check():
 @app.route('/last_check', methods=['POST','GET'])
 def last_check():
     jokenlst = ['id','lastname','firstname','lstyomi','fstyomi','start','birth','age']
-
     if request.method == 'POST':
         global upcon
         upcon = request.form.getlist('kosin')
@@ -150,17 +151,26 @@ def last_check():
         except:
             print('sql動作は失敗しました')
         ucNgs = len(upcon)
+        print('チェック　', upcon)
         for i in range(ucNgs):
             w = upcon[i]
             nn = jokenlst[i]
-            global dic
-            dic[nn] = w
-        print(dic)
+            global dic_check
+            dic_check[nn] = w
+
+        for i in range(ucNgs):
+            w = upcon[i]
+            nn = jokenlst[i]
+            global dic_com
+            dic_com[w] = nn
+
+        print(dic_check)
+        print(dic_com)
 
     else:
         upcon = None
 
-    return render_template('last_check.html', upcon=upcon, result=result, dic=dic)
+    return render_template('last_check.html', upcon=upcon, result=result, dic_check=dic_check)
 
 @app.route('/delete')
 def delete():
@@ -189,7 +199,8 @@ def delete_check():
 def complete():
     sql = ''
     p = "'"
-    #result = ''
+    sentence = ''
+    num = 0
     if addlist != []:
         sql = 'INSERT INTO meibotest (id, lastname, firstname, lstyomi, fstyomi, start, birth, age) VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})'.format(addlist[0], addlist[1], addlist[2], addlist[3], addlist[4], addlist[5], addlist[6], addlist[7])
         word0 = p + str(addlist[0]) + p
@@ -215,19 +226,29 @@ def complete():
         print(str(getid) + 'を削除しました。')
 
     elif upcon != []:
-        print('たどり着いた', dic)
-        sql = "UPDATE meibotest SET " + "id = " + str(dic['id']) + " WHERE id = " + str(upid)
+        print('たどり着いた', dic_com)
+        list02 = [i for i, i in enumerate(upcon) if i != '']
+        print(list02)
+
+        for j in list02:
+            sentence += str(dic_com[j]) + ' = ' + p + str(list02[num]) + p + ', '
+            num += 1
+        sentence = sentence.rstrip(', ')
+        print(sentence)
+        sql = "UPDATE meibotest SET " + sentence + " WHERE id = " + str(upid)
         print(sql)
-        curs.execute(sql)
-        conn.commit()
-        print(str(upid) + "を" + str(dic['id'] + 'に更新しました。'))
+
+        try:
+            curs.execute(sql)
+            conn.commit()
+        except:
+            print('sql失敗しました')
+            print('実行したsql文は', sql, 'です')
 
     else:
         print('失敗しました')
 
     return render_template('complete.html')
-
-
 
 ## おまじない
 if __name__ == "__main__":

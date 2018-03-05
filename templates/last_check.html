@@ -46,15 +46,15 @@
             <h1>修正後</h1>
             <table class="table-container">
               <tr class="result-table">
-                {% if dic %}
-                <td>{{ dic["id"] }}</td>
-                <td>{{ dic["lastname"] }}</td>
-                <td>{{ dic["firstname"] }}</td>
-                <td>{{ dic["lstyomi"] }}</td>
-                <td>{{ dic["fstyomi"] }}</td>
-                <td>{{ dic["start"] }}</td>
-                <td>{{ dic["birth"] }}</td>
-                <td>{{ dic["age"] }}</td>
+                {% if dic_check %}
+                <td>{{ dic_check["id"] }}</td>
+                <td>{{ dic_check["lastname"] }}</td>
+                <td>{{ dic_check["firstname"] }}</td>
+                <td>{{ dic_check["lstyomi"] }}</td>
+                <td>{{ dic_check["fstyomi"] }}</td>
+                <td>{{ dic_check["start"] }}</td>
+                <td>{{ dic_check["birth"] }}</td>
+                <td>{{ dic_check["age"] }}</td>
                 {% endif %}
             </table>
             <button class="btn-2 reset-button" type="button" onclick="location.href='/complete'">更新</button>
