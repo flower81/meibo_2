@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request #追加
 import MySQLdb #追加
+from slackclient import SlackClient
 
 app = Flask(__name__)
 
@@ -10,6 +11,18 @@ conn = MySQLdb.connect(
         db='meibo_db',
         charset='utf8',
     )
+
+def post_slack(message):
+    token = "xoxb-270694051571-0t6GZJ0j0uBgaN62Kgt1ey42"
+    sc = SlackClient(token)
+    sc.api_call(
+        "chat.postMessage",
+        channel="#test_pair",
+        text=message,
+        username='meibo.',
+        icon_emoji=':robot_face:'
+    )
+
 
 curs = conn.cursor()    #   mysqlと接続する時に使う
 addlist = []
@@ -217,6 +230,7 @@ def complete():
         curs.execute(sql)
         conn.commit()
         conn.close()
+        post_slack('追加したよ')
 
     elif getid != '':
         dltsql = 'DELETE FROM meibotest WHERE id = ' + p + getid + p
