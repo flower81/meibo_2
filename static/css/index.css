@@ -8,12 +8,10 @@ body {
   background-image: url(../image/background1.png);
   background-size: 20% auto;
   margin: 0px;
-
 }
 
 .body {
   width: 1300px;
-  height: 1500px;
 }
 
 header {
@@ -28,7 +26,6 @@ header {
 
 #hoge {
   width: 1300px;
-  height: 1500px;
   margin:0 auto;
   background-color: rgba(255, 0, 0, 0);
 }
@@ -170,13 +167,15 @@ header {
 }
 
 .result {
-  height: 550px;
   width: 1300px;
+}
+
+.result-table td {
+  text-align: center;
 }
 
 .container2{
   width: 1050px;
-  height: 500px;
   color: #383939;
   font-weight: lighter;
   text-align: center;
@@ -243,11 +242,11 @@ tr th {
 }
 
 footer {
-  position: absolute;
-  top: 1035px;
+  position: relative;
   width: 1300px;
   height: 250px;
   background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 8px;
 }
 
 .link-button {
