@@ -52,6 +52,9 @@ def hello():
             charset='utf8',
         )
 
+    curs = conn.cursor()    #   mysqlと接続する時に使う
+
+
     if request.method == 'POST':
         getlst = request.form.getlist('sagasu') #   入力された検索語句をリスト型として取得
         print(getlst)
@@ -65,30 +68,39 @@ def hello():
         lst2ngs = len(list02)   #   list02の長さ(要素数)を格納
 
         if lst2ngs > 1:
-            if getlst[5] != '' and getlst[6] != '':
+            if getlst[5] != '' and getlst[6] != '':     #入社日の範囲検索
                 sql = "SELECT * FROM meibotest WHERE " + str(jokenlst[5]) + ' between ' + p + str(getlst[5]) + p + ' and ' + p + str(getlst[6]) + p
 
-            elif getlst[7] != '' and getlst[8] != '':
+            elif getlst[7] != '' and getlst[8] != '':   #誕生日の範囲検索
                 sql = "SELECT * FROM meibotest WHERE " + str(jokenlst[7]) + ' between ' + p + str(getlst[7]) + p + ' and ' + p + str(getlst[8]) + p
 
-            elif getlst[9] != '' and getlst[10] != '':
+            elif getlst[9] != '' and getlst[10] != '':  #年齢の範囲検索
                 sql = "SELECT * FROM meibotest WHERE " + str(jokenlst[9]) + ' between ' + p + str(getlst[9]) + p + ' and ' + p + str(getlst[10]) + p
 
             else:
+                #for j in list02:
+                #    bns += str(dic[j]) + ' = ' + p + j + p + wrdA
+                #bns = bns.rstrip(' AND ')
                 for j in list02:
-                    bns += str(dic[j]) + ' = ' + p + j + p + wrdA
-                bns = bns.rstrip(' AND ')
-                sql = "SELECT * FROM meibotest WHERE " + bns
+                    bns += " " + str(dic[j]) + " LIKE " + "'%" + j + "%'" + " OR"
+                bns = bns.rstrip(' OR ')
+
+
+                sql = "SELECT * FROM meibotest WHERE" + bns
 
         elif lst2ngs == 1:
+            #for j in list02:
+            #    bns += str(dic[j]) + ' = ' + p + j + p + wrdA
+            #bns = bns.rstrip(' AND ')
             for j in list02:
-                bns += str(dic[j]) + ' = ' + p + j + p + wrdA
-            bns = bns.rstrip(' AND ')
+                bns += " " + str(dic[j]) + " LIKE " + "'%" + j + "%'" + " OR"
+            bns = bns.rstrip(' OR ')
             sql = "SELECT * FROM meibotest WHERE " + bns
 
         elif lst2ngs == 0:
             sql = ("SELECT * FROM meibotest")
 
+        print(sql)
         curs.execute(sql)
         kekka = curs.fetchall()
         for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in kekka:
@@ -214,8 +226,9 @@ def complete():
     p = "'"
     sentence = ''
     num = 0
+    failure = ''
+    slacksc = ''
     if addlist != []:
-        sql = 'INSERT INTO meibotest (id, lastname, firstname, lstyomi, fstyomi, start, birth, age) VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})'.format(addlist[0], addlist[1], addlist[2], addlist[3], addlist[4], addlist[5], addlist[6], addlist[7])
         word0 = p + str(addlist[0]) + p
         word1 = p + str(addlist[1]) + p
         word2 = p + str(addlist[2]) + p
@@ -227,10 +240,21 @@ def complete():
 
         sql = 'INSERT INTO meibotest (id, lastname, firstname, lstyomi, fstyomi, start, birth, age) VALUES ({0}, {1}, {2}, {3}, {4}, {5}, {6}, {7})'.format(word0, word1, word2, word3, word4, word5, word6, word7)
         print(sql)
-        curs.execute(sql)
-        conn.commit()
-        conn.close()    #この変修正必要
-        post_slack('追加したよ')
+        try:
+            curs.execute(sql)
+            conn.commit()
+
+            curs.close()
+            conn.close()    #この変修正必要
+
+            slacksc = "はじめまして！" + str(addlist[1]) + " " + str(addlist[2]) + "(" + str(addlist[3]) + " " + str(addlist[4]) + ")です。" + "\n" \
+                        "入社日は" + str(addlist[5]) + "です！" + "\n" \
+                        "誕生日は" + str(addlist[6]) + "で、" + str(addlist[7]) + "歳です！" + "\n" \
+                        "これからよろしくお願いします！"
+            post_slack(slacksc)
+            print(sl)
+        except:
+            failure = 'Failure'
 
     elif getid != '':
         dltsql = 'DELETE FROM meibotest WHERE id = ' + p + getid + p
