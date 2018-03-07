@@ -292,3 +292,10 @@ footer {
 .last-btn{
   margin: 0px auto;
 }
+
+.search-form-type2{
+  /* height: 260px; */
+  width: 560px;
+  padding: 50px 30px 0px 30px;
+  margin: 0px auto;
+}
