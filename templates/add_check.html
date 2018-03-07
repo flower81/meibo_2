@@ -27,39 +27,39 @@
     <form name="add_check" action="/complete" method="post">
       <div class="search">
         <div class="container">
-          <div class="search-form">
+          <div class="add-check-form">
             <h1>10バトンの新しいメンバーです!!</h1>
-            <table class="result-table">
+            <table class="add-result-table">
               {% if addlist %}
               <tr>
-                <td>ID</td>
+                <td class="td-title">ID</td>
                 <td>{{ addlist[0] }}</td>
               </tr>
               <tr>
-                <td>名前</td>
+                <td class="td-title">名前</td>
                 <td>{{ addlist[1] }} {{ addlist[2] }}</td>
               </tr>
               <tr>
-                <td>読み</td>
+                <td class="td-title">読み</td>
                 <td>{{ addlist[3] }} {{ addlist[4] }}</td>
               </tr>
               <tr>
-                <td>入社日</td>
+                <td class="td-title">入社日</td>
                 <td>{{ addlist[5] }}</td>
               </tr>
               <tr>
-                <td>誕生日</td>
+                <td class="td-title">誕生日</td>
                 <td>{{ addlist[6] }}</td>
               </tr>
               <tr>
-                <td>年齢</td>
+                <td class="td-title">年齢</td>
                 <td>{{ addlist[7] }}</td>
               </tr>
               {% endif %}
             </table>
           </div>
           <div class="btn-form">
-            <button class="btn-2 search-button" type="button" onclick="location.href='complete.html'">追加</button>
+            <button class="btn-2 complate-button" type="button" onclick="location.href='complete.html'">追加</button>
             <button class="btn-2 reset-button" type="button" onclick="location.href='add.html'">入力画面へ戻る</button>
           </div>
         </div>
