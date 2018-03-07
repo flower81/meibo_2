@@ -271,3 +271,24 @@ footer {
   margin: 0px;
   padding-top: 30px;
 }
+
+
+.add-result-table {
+  width: 600px;
+  margin: 0px auto;
+}
+
+.td-title {
+  width: 30px;
+  text-align: center;
+}
+
+.add-check-form{
+  width: 800px;
+  padding: 20px 30px 15px 30px;
+  margin: 0px auto;
+}
+
+.complate-btn{
+  
+}
