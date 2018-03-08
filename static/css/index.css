@@ -219,15 +219,12 @@ header {
 
 .table-container {
   margin: 0px auto;
-}
-
-.table-container {
   border-collapse: collapse;
   border-spacing: 0;
   background-color: white;
 }
 
-tr th, tr td {
+tr th, tr td{
   border: 1px solid black;
   height: 35px;
   width: 120px;
@@ -297,5 +294,20 @@ footer {
   /* height: 260px; */
   width: 560px;
   padding: 50px 30px 0px 30px;
+  margin: 0px auto;
+}
+
+.ather-container{
+  width: 1050px;
+  color: #383939;
+  font-weight: lighter;
+  text-align: center;
+  margin: 0px auto;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.ather-btn-form{
+  padding: 15px 0px 30px 0px;
+  width: 500px;
   margin: 0px auto;
 }
