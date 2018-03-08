@@ -27,11 +27,11 @@
     </div>
     <div class="contents">
       <form name="test" action="/last_check" method="post">
-        <div class="search">
-          <div class="container">
+        <div class="result">
+          <div class="ather-container">
             <div class="search-form">
               <table class="table-container">
-                <tr>
+                <tr class="result-table update">
                   <th>ID</th>
                   <th>姓(漢字)</th>
                   <th>名(漢字)</th>
@@ -41,7 +41,7 @@
                   <th>誕生日</th>
                   <th>年齢</th>
                 </tr>
-                <tr class="result-table">
+                <tr class="result-table update">
                   {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result %}
                   <td>{{ id }}</td>
                   <td>{{ lastname }}</td>
@@ -58,32 +58,32 @@
             <div class="search-form">
               <div class="search-content">
                 <span class="search-title">ID</span>
-                <input class="search-type1" id="id-form" type="text" name="kosin">
+                <input class="search-part type1" id="id-form" type="text" name="kosin">
               </div>
               <div class="search-content">
                 <span class="search-title">姓名(漢字)</span>
-                <input class="search-type3" id="FIRSTNAME-form" type="text" name="kosin">
-                <input class="search-type3" id="LASTNAME-form" type="text" name="kosin">
+                <input class="search-part type3" id="FIRSTNAME-form" type="text" name="kosin">
+                <input class="search-part type3" id="LASTNAME-form" type="text" name="kosin">
               </div>
               <div class="search-content">
                 <span class="search-title">姓名(カナ)</span>
-                <input class="search-type3" id="firstname-form" type="text" name="kosin">
-                <input class="search-type3" id="lastname-form" type="text" name="kosin">
+                <input class="search-part type3" id="firstname-form" type="text" name="kosin">
+                <input class="search-part type3" id="lastname-form" type="text" name="kosin">
               </div>
               <div class="search-content">
                 <span class="search-title">入社日</span>
-                <input class="search-type2" id="joined-from" type="date" max="9999-12-31" name="kosin">
+                <input class="search-part type1" id="joined-from" type="date" max="9999-12-31" name="kosin">
               </div>
               <div class="search-content">
                 <span class="search-title">誕生日</span>
-                <input class="search-type2" id="birth-from" type="date" max="9999-12-31" name="kosin">
+                <input class="search-part type1" id="birth-from" type="date" max="9999-12-31" name="kosin">
               </div>
               <div class="search-content">
                 <span class="search-title">年齢</span>
-                <input class="search-type2" id="age-from" type="number" min="0" name="kosin">
+                <input class="search-part type1" id="age-from" type="number" min="0" name="kosin">
               </div>
             </div>
-            <div class="btn-form">
+            <div class="ather-btn-form">
               <button class="btn-2 search-button" type="button" onclick="last_check('test', 'last_check.html', 'POST');">更新</button>
               <script type="text/javascript">
                 function last_check(formname, url, method){
