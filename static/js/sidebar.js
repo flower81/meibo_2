@@ -1,4 +1,4 @@
-$(function(){
+(function(){
 
   $('.btn').click(function(){
     $('.sidebar').animate({width: 'toggle'}, 'slow');

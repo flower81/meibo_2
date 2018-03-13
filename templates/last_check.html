@@ -26,52 +26,6 @@
 
   <div class="contents">
     <form class="test" action="/complete" method="post">
-<<<<<<< HEAD
-      <div class="search">
-        <div class="container">
-          <div class="search-form">
-            <h1>修正前</h1>
-            <table class="table-container">
-              <tr>
-                <th>ID</th>
-                <th>姓(漢字)</th>
-                <th>名(漢字)</th>
-                <th>姓(カナ)</th>
-                <th>名(カナ)</th>
-                <th>入社日</th>
-                <th>誕生日</th>
-                <th>年齢</th>
-              </tr>
-              <tr class="result-table">
-                {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result %}
-                <td>{{ id }}</td>
-                <td>{{ lastname }}</td>
-                <td>{{ firstname }}</td>
-                <td>{{ lstyomi }}</td>
-                <td>{{ fstyomi }}</td>
-                <td>{{ start }}</td>
-                <td>{{ birth }}</td>
-                <td>{{ age }}</td>
-              </tr>
-              {% endfor %}
-            </table>
-            <h1>修正後</h1>
-            <table class="table-container">
-              <tr class="result-table">
-                {% if dic_check %}
-                <td>{{ dic_check["id"] }}</td>
-                <td>{{ dic_check["lastname"] }}</td>
-                <td>{{ dic_check["firstname"] }}</td>
-                <td>{{ dic_check["lstyomi"] }}</td>
-                <td>{{ dic_check["fstyomi"] }}</td>
-                <td>{{ dic_check["start"] }}</td>
-                <td>{{ dic_check["birth"] }}</td>
-                <td>{{ dic_check["age"] }}</td>
-                {% endif %}
-            </table>
-            <button class="btn-2 reset-button" type="button" onclick="location.href='/complete'">更新</button>
-            <button class="btn-2 reset-button" type="button" onclick="location.href='/update'">検索画面へ戻る</button>
-=======
       <div class="ather-container">
         <div class="search-form-type3">
           <h1>修正前</h1>
@@ -128,7 +82,6 @@
               <button class="btn-2 reset-button" type="button" onclick="location.href='complete.html'">更新</button>
               <button class="btn-2 reset-button" type="button" onclick="location.href='update.html'">検索画面へ戻る</button>
             </div>
->>>>>>> 0a1d05b5acb4a1554e3ed49dfa3fb3c2727e27f9
           </div>
         </div>
       </div>
