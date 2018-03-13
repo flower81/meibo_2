@@ -13,7 +13,7 @@ conn = MySQLdb.connect(
     )
 
 def post_slack(message):
-    token = ""
+    token = "xoxb-270694051571-0t6GZJ0j0uBgaN62Kgt1ey42"
     sc = SlackClient(token)
     sc.api_call(
         "chat.postMessage",
@@ -149,6 +149,7 @@ def update_check():
         global upid
         upid = request.form['shusei']
         sql = "SELECT * FROM meibotest WHERE id = " + p + str(upid) + p
+        print(sql)
 
         try:
             curs.execute(sql)
@@ -170,6 +171,7 @@ def last_check():
         upcon = request.form.getlist('kosin')
         print(upcon)
         sql = "SELECT * FROM meibotest WHERE id = " + p + str(upid) + p
+        print(sql)
         try:
             curs.execute(sql)
             result = curs.fetchall()
@@ -228,7 +230,9 @@ def complete():
     num = 0
     failure = ''
     slacksc = ''
+    lastword = ''
     if addlist != []:
+        lastword = 'Welcome to 10BATON'
         word0 = p + str(addlist[0]) + p
         word1 = p + str(addlist[1]) + p
         word2 = p + str(addlist[2]) + p
@@ -257,6 +261,7 @@ def complete():
             failure = 'Failure'
 
     elif getid != '':
+        lastword = 'See you again...'
         dltsql = 'DELETE FROM meibotest WHERE id = ' + p + getid + p
 
         curs.execute(dltsql)
@@ -264,6 +269,7 @@ def complete():
         print(str(getid) + 'を削除しました。')
 
     elif upcon != []:
+        lastword = 'Update succeeded'
         print('たどり着いた', dic_com)
         list02 = [i for i, i in enumerate(upcon) if i != '']
         print(list02)
@@ -286,7 +292,7 @@ def complete():
     else:
         print('失敗しました')
 
-    return render_template('complete.html')
+    return render_template('complete.html', lastword=lastword)
 
 ## おまじない
 if __name__ == "__main__":

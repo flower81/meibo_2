@@ -15,7 +15,7 @@
   <header>
     <div class="header-wrapper">
       <div class="header-left">
-        <h1>Complete</h1>
+        <h1>Complate</h1>
       </div>
       <div class="header-right">
         <p>slack連携テスト</p>
@@ -28,7 +28,9 @@
     <div class="contents">
       <div class="search-form">
         <div class="search-content">
-          <h1 style="color:white; text-align:center;">Welcome to 10BATON</h1>
+          {% if lastword %}
+          <h1 style="color:white; text-align:center;">{{ lastword }}</h1>
+          {% endif %}
         </div>
       </div>
       <div class="btn-form">

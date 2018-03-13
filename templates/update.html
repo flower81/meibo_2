@@ -18,7 +18,8 @@
         <h1>To Update</h1>
       </div>
       <div class="header-right">
-        <p><a href="setting.html" class="link-button return">戻る</a></p>
+        <p><a href="/setting" class="link-button return">戻る</a></p>
+        <!--p><a href="setting.html" class="link-button return">戻る</a></p-->
       </div>
     </div>
   </header>
@@ -34,7 +35,8 @@
           </div>
           <div class="btn-container update">
             <div class="btn-form">
-              <button class="btn-2 search-button" type="button" onclick="update_check('test', 'update_check.html', 'POST');">確認</button>
+              <button class="btn-2 search-button" type="button" onclick="update_check('test', '/update_check', 'POST');">確認</button>
+              <!--button class="btn-2 search-button" type="button" onclick="update_check('test', 'update_check.html', 'POST');">確認</button-->
               <script type="text/javascript">
                 function update_check(formname, url, method){
                   var f = document.forms[formname];

@@ -84,7 +84,8 @@
               </div>
             </div>
             <div class="ather-btn-form">
-              <button class="btn-2 search-button" type="button" onclick="last_check('test', 'last_check.html', 'POST');">更新</button>
+              <button class="btn-2 search-button" type="button" onclick="last_check('test', '/last_check', 'POST');">更新</button>
+              <!--button class="btn-2 search-button" type="button" onclick="last_check('test', 'last_check.html', 'POST');">更新</button-->
               <script type="text/javascript">
                 function last_check(formname, url, method){
                   var f = document.forms[formname];
@@ -94,7 +95,8 @@
                   return true;
                 }
               </script>
-              <button class="btn-2 reset-button" type="button" onclick="location.href='update.html'">検索画面へ戻る</button>
+              <button class="btn-2 reset-button" type="button" onclick="location.href='/update'">検索画面へ戻る</button>
+              <!--button class="btn-2 reset-button" type="button" onclick="location.href='update.html'">検索画面へ戻る</button-->
             </div>
           </div>
 
