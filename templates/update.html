@@ -23,20 +23,18 @@
     </div>
   </header>
   <div class="main">
-    <div id="hoge">
-    </div>
     <div class="contents">
       <form name="test" action="/update_check" method="post">
-        <div class="search">
-          <div class="container">
-            <div class="search-form">
-              <div class="search-content">
-                <span class="search-title">ID</span>
-                <input class="search-part type1" id="id-form" type="text" name="shusei">
-              </div>
+        <div class="ather-container">
+          <div class="search-form-type2">
+            <div class="search-content">
+              <span class="search-title">ID</span>
+              <input class="search-part type1" id="id-form" type="text" name="shusei">
             </div>
+          </div>
+          <div class="btn-container update">
             <div class="btn-form">
-              <button class="btn-2 search-button" type="button" onclick="update_check('test', '/update_check', 'POST');">確認</button>
+              <button class="btn-2 search-button" type="button" onclick="update_check('test', 'update_check.html', 'POST');">確認</button>
               <script type="text/javascript">
                 function update_check(formname, url, method){
                   var f = document.forms[formname];
@@ -45,9 +43,9 @@
                   f.submit();
 
                   return true;
-                }
+                  }
               </script>
-              <button class="btn-2 reset-button" type="button" onclick="location.href='/setting'">設定メニュー</button>
+              <button class="btn-2 reset-button" type="button" onclick="location.href='setting.html'">設定メニュー</button>
             </div>
           </div>
         </div>
