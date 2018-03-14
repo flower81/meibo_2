@@ -316,7 +316,7 @@ footer {
   padding-bottom: 60px;
 }
 
-.last {
+.last ,.delete_check_btn{
   padding-bottom: 30px;
 }
 

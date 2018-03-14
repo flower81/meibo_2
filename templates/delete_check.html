@@ -25,42 +25,40 @@
 <div class= "main">
   <div class="contents">
     <form name="delete_check" action="/complete" method="post">
-      <div class="search">
-        <div class="container">
-          <div class="search-form-type3">
-            <h1>Is it true?</h1>
-            <table class="table-container">
-              <tr>
-                <th>ID</th>
-                <th>姓(漢字)</th>
-                <th>名(漢字)</th>
-                <th>姓(カナ)</th>
-                <th>名(カナ)</th>
-                <th>入社日</th>
-                <th>誕生日</th>
-                <th>年齢</th>
-              </tr>
-              <tr class="result-table">
-                {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result %}
-                <td>{{ id }}</td>
-                <td>{{ lastname }}</td>
-                <td>{{ firstname }}</td>
-                <td>{{ lstyomi }}</td>
-                <td>{{ fstyomi }}</td>
-                <td>{{ start }}</td>
-                <td>{{ birth }}</td>
-                <td>{{ age }}</td>
-              </tr>
-              {% endfor %}
-            </table>
-          </div>
-          <div class="btn-container">
-            <div class="btn-form">
-              <!-- <button class="btn-2 search-button" type="button" onclick="location.href='/complete'">削除</button>
-              <button class="btn-2 reset-button" type="button" onclick="location.href='/delete'">入力画面へ戻る</button> -->
-              <button class="btn-2 search-button" type="button" onclick="location.href='complete.html'">削除</button>
-              <button class="btn-2 reset-button" type="button" onclick="location.href='delete.html'">入力画面へ戻る</button>
-            </div>
+      <div class="ather-container">
+        <div class="search-form-type3">
+          <h1>Is it true?</h1>
+          <table class="table-container">
+            <tr>
+              <th>ID</th>
+              <th>姓(漢字)</th>
+              <th>名(漢字)</th>
+              <th>姓(カナ)</th>
+              <th>名(カナ)</th>
+              <th>入社日</th>
+              <th>誕生日</th>
+              <th>年齢</th>
+            </tr>
+            <tr class="result-table">
+              {% for id, lastname, firstname, lstyomi, fstyomi, start, birth, age in result %}
+              <td>{{ id }}</td>
+              <td>{{ lastname }}</td>
+              <td>{{ firstname }}</td>
+              <td>{{ lstyomi }}</td>
+              <td>{{ fstyomi }}</td>
+              <td>{{ start }}</td>
+              <td>{{ birth }}</td>
+              <td>{{ age }}</td>
+            </tr>
+            {% endfor %}
+          </table>
+        </div>
+        <div class="btn-container delete_check_btn">
+          <div class="btn-form">
+            <!-- <button class="btn-2 search-button" type="button" onclick="location.href='/complete'">削除</button>
+            <button class="btn-2 reset-button" type="button" onclick="location.href='/delete'">入力画面へ戻る</button> -->
+            <button class="btn-2 delete-button" type="button" onclick="location.href='complete.html'">削除</button>
+            <button class="btn-2 reset-button" type="button" onclick="location.href='delete.html'">入力画面へ戻る</button>
           </div>
         </div>
       </div>
