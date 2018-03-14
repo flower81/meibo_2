@@ -287,7 +287,6 @@ footer {
 }
 
 .last-btn{
-  margin: 0px auto;
 }
 
 .search-form-type2{
@@ -329,4 +328,9 @@ footer {
 
 .result-table {
   text-align: center;
+}
+
+.complate-btn-form{
+  width: 160px;
+  margin: 0px auto;
 }
