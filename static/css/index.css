@@ -239,11 +239,9 @@ tr th {
 }
 
 footer {
-  position: relative;
   width: 1300px;
   height: 250px;
   background-color: rgba(0, 0, 0, 0.5);
-  margin-top: 8px;
 }
 
 .link-button {
