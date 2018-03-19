@@ -52,6 +52,7 @@ header {
 
 .main {
   position: relative;
+  top: 25px;
 }
 
 .sidebar-wrapper{
