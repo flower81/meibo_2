@@ -232,6 +232,7 @@ tr th, tr td{
   background-color: rgb( 255, 255, 255);
   border: 1px solid rgba(0, 50, 100, 0.5);
   font-weight: normal;
+  text-align: center;
 }
 
 tr th {
