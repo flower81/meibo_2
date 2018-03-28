@@ -20,7 +20,20 @@
             <h1>Main Page</h1>
           </div>
           <div class="header-right">
-            <p><a href="/setting" class="link-button return">設定画面へ</a></p>
+            <!-- <p><a href="/setting" class="link-button return">設定画面へ</a></p> -->
+            <!-- こっから折りたたみメニュー作ってみる -->
+            <div class="modal-wrapper">
+              <div class="modal-btn">
+                <p id="list-name">▼　Menu</p>
+              </div>
+              <div class="menu-modal">
+                <ul>
+                  <li><a href="add.html" class="modal-list">Add</a></li>
+                  <li><a href="update.html" class="modal-list">Update</a></li>
+                  <li><a href="delete.html" class="modal-list">Delete</a></li>
+                </ul>
+              </div>
+            </div>
             <!-- <p><a href="setting.html" class="link-button return">設定画面へ</a></p> -->
           </div>
         </div>
@@ -128,8 +141,10 @@
     <!-- この直下のjs2つはローカル確認用 -->
     <script type="text/javascript" src="../static/js/particles.js"></script>
     <script type="text/javascript" src="../static/js/setting.js"></script>
+    <script type="text/javascript" src="../static/js/acoadionmenu.js"></script>
     <script type="text/javascript" src="{{url_for('static',filename='js/particles.js')}}"></script>
     <script type="text/javascript" src="{{url_for('static',filename='js/setting.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('static',filename='js/acoadionmenu.js')}}"></script>
   </body>
 {% endblock %}
 </html>

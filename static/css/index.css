@@ -46,8 +46,9 @@ header {
 }
 
 .header-right p {
-  margin: 0px 25px;
+  margin: 0px;
   color: white;
+  padding: 0px 30px 0px 10px;
 }
 
 .main {
@@ -332,4 +333,35 @@ footer {
 .complate-btn-form{
   width: 160px;
   margin: 0px auto;
+}
+
+.modal-wrapper {
+  color: white;
+  padding-right: 20px;
+}
+
+.menu-modal {
+  height: 170px;
+  width: 100px;
+  background-color: rgba(100, 130, 180, 0.5);
+}
+
+ul {
+  margin: 0px;
+  padding-left: 20px;
+  list-style: none;
+}
+
+li {
+  height: 40px;
+}
+
+.modal-list {
+  font-family: 'Hiragino Maru Gothic ProN',sans-serif;
+  color: white;
+}
+
+.modal-list:hover, #list-name:hover  {
+  color: #F704AE;
+  cursor: pointer;
 }
